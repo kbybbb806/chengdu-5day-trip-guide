@@ -165,8 +165,8 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
     <div class="rf-item"><span class="rf-icon rf-2">🚄</span><b>D1 8/22 周六</b><span>C5746 06:14→07:53 成都东→黄龙九寨站 → 直通车 → 九寨沟全天 → 16:30出沟 → 宿川主寺</span><span class="rf-way">高铁1h39m+接驳2h</span></div>
     <div class="rf-item"><span class="rf-icon rf-1">🏞</span><b>D2 8/23 周日</b><span>一早黄龙(8:00-12:30) → C5754 14:14→16:06 黄龙九寨→三星堆站 → 三星堆(16:30-19:30) → C5798 20:13→20:39 三星堆站→成都东</span><span class="rf-way">省一整天！</span></div>
     <div class="rf-item"><span class="rf-icon rf-3">🏔</span><b>D3 8/24 周一</b><span>拼车 06:00→11:00 成都→四姑娘山镇 → 长坪沟徒步12:00-18:00 → 拼车 18:30→23:00 返成都</span><span class="rf-way">拼车往返约11h</span></div>
-    <div class="rf-item"><span class="rf-icon rf-2">⛰</span><b>D4 8/25 周二</b><span>C字头动车 07:00→08:20 成都→峨眉山站 → 观光车→雷洞坪 → 索道→金顶云海 → 宿雷洞坪</span><span class="rf-way">动车1h+观光车2h</span></div>
-    <div class="rf-item"><span class="rf-icon rf-1">🌅</span><b>D5 8/26 周三</b><span>05:50起床→06:00首班索道→06:15金顶日出 → 下山 → C动车 13:00→14:10 峨眉山→成都 → 国航 CA4393 19:55→21:50 成都双流T2→长沙黄花T1（¥540+税¥120）</span><span class="rf-way">日出约06:15</span></div>
+    <div class="rf-item"><span class="rf-icon rf-2">⛰</span><b>D4 8/25 周二</b><span>C6273 06:34→07:49 成都东→峨眉山站 → 观光车→雷洞坪 → 索道→金顶云海 → 宿雷洞坪</span><span class="rf-way">动车1h15m+观光车2h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-1">🌅</span><b>D5 8/26 周三</b><span>05:50起床→06:00首班索道→06:15金顶日出 → 下山 → D252 13:22→14:27 峨眉山→成都东 → 国航 CA4393 19:55→21:50 成都双流T2→长沙黄花T1（¥540+税¥120）</span><span class="rf-way">日出约06:15</span></div>
   </div>
 </div>
 
@@ -429,8 +429,8 @@ const dayData = [
     hotelStart: { key:'d4_start', label:'起点酒店', defaultName:'成都市区酒店（续住D3）', lat:30.6570, lng:104.0810, cityName:'成都', region:'锦江区', note:'06:30出发去火车站' },
     hotelEnd:   { key:'d4_end', label:'终点酒店', defaultName:'雷洞坪酒店（峨眉山）', lat:29.5250, lng:103.3350, cityName:'乐山', region:'峨眉山市', note:'宿雷洞坪2430m · 为D5金顶日出铺路' },
     pois:[
-      { cat:'transport', name:'成都 → 峨眉山站（动车）', lat:30.6180, lng:104.0680, time:'07:00', price:'二等座¥65',
-        line:'C字头动车 · 约1小时10分', alt:'成都东/成都南均有班次，12306查询',
+      { cat:'transport', name:'成都 → 峨眉山站（动车）', lat:30.6180, lng:104.0680, time:'06:34', price:'二等座¥65',
+        line:'C6273 · 06:34发 → 07:49到 · 1小时15分', alt:'备选 C6253 08:44→09:53 / D251 07:05→08:24',
         desc:'乘早班动车，08:20到峨眉山站，打车20分钟到报国寺游客中心。' },
       { cat:'culture', name:'报国寺·购票上山', lat:29.5680, lng:103.4690, time:'09:00', price:'门票¥160+观光车¥90',
         desc:'峨眉山门户。购票后乘观光车（报国寺→雷洞坪往返¥90，约2小时盘山公路）。', tip:'行李寄存游客中心或直接带上雷洞坪' },
@@ -475,8 +475,8 @@ const dayData = [
         desc:'08:30索道下山回雷洞坪取行李，09:30乘观光车下山，11:30到报国寺。' },
       { cat:'food', name:'报国寺午餐（峨眉山脚下）', lat:29.5690, lng:103.4700, time:'12:00', price:'¥50',
         desc:'峨眉豆腐脑、叶儿粑、乐山钵钵鸡，下山后最解馋。' },
-      { cat:'transport', name:'峨眉山站 → 成都', lat:29.6090, lng:103.5090, time:'13:00', price:'二等座¥65',
-        line:'动车 · 约1小时10分', alt:'14:30前到成都',
+      { cat:'transport', name:'峨眉山站 → 成都东', lat:29.6090, lng:103.5090, time:'13:22', price:'二等座¥65',
+        line:'D252 · 13:22发 → 14:27到 · 1小时05分', alt:'备选 C794 11:34→12:44 / C756 14:21→15:48',
         desc:'12:30打车到峨眉山站，13:00动车回成都。' },
       { cat:'night', name:'成都自由时间（春熙路/宽窄巷子）', lat:30.6570, lng:104.0810, time:'15:00-18:00', price:'¥80',
         desc:'14:10到成都后：逛春熙路IFS熊猫、宽窄巷子，买伴手礼+早晚饭。18:00前往双流机场赶19:55航班。',
