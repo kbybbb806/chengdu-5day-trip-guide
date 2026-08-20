@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>成都·九寨·黄龙·四姑娘·峨眉 5日特种兵徒步摄影环线</title>
+<style>
+:root {
+  --ink: #1a1f36; --paper: #fafbfc; --cream: #f5f3f0;
+  --accent: #c0392b; --accent2: #635bff;
+  --gold: #b8860b; --muted: #697386; --border: #e3e8ee;
+  --green: #2e7d32; --blue: #1565c0; --card-bg: #ffffff;
+  --shadow: 0 2px 12px rgba(0,0,0,.06);
+  --cat-sight: #6366f1; --cat-food: #f59e0b; --cat-culture: #10b981;
+  --cat-shop: #ec4899; --cat-night: #8b5cf6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--paper); color:var(--ink); line-height:1.65; }
+/* ===== Hero ===== */
+.hero { background:linear-gradient(160deg,#7e1214 0%,#b52830 40%,#d4483a 100%); color:#fff; padding:52px 20px 44px; text-align:center; position:relative; overflow:hidden; }
+.hero::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(255,255,255,.08) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(0,0,0,.15) 0%, transparent 45%); pointer-events:none; }
+.hero-tag { display:inline-block; font-size:12px; letter-spacing:3px; border:1px solid rgba(255,255,255,.5); border-radius:20px; padding:4px 14px; margin-bottom:14px; }
+.hero h1 { font-size:clamp(24px,4.5vw,40px); font-weight:800; margin-bottom:10px; letter-spacing:1px; }
+.hero-sub { font-size:14px; opacity:.92; max-width:640px; margin:0 auto 18px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.hero-meta span { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:5px 14px; border-radius:20px; font-size:13px; }
+/* ===== Section ===== */
+.section { max-width:1080px; margin:0 auto; padding:34px 18px 8px; }
+.section-title { font-size:20px; font-weight:800; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:5px; height:22px; background:var(--accent); border-radius:3px; }
+/* ===== 概览 ===== */
+.ov-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:18px; }
+.ov-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; text-align:center; box-shadow:var(--shadow); }
+.ov-card .num { font-size:26px; font-weight:800; color:var(--accent); }
+.ov-card .lbl { font-size:12px; color:var(--muted); margin-top:4px; }
+.route-flow { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:20px; box-shadow:var(--shadow); font-size:14px; }
+.route-flow .rf-item { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px dashed var(--border); }
+.route-flow .rf-item:last-child { border-bottom:none; }
+.rf-icon { width:26px; height:26px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px; color:#fff; }
+.rf-1 { background:var(--cat-sight); } .rf-2 { background:var(--cat-culture); } .rf-3 { background:var(--cat-food); }
+.rf-way { color:var(--muted); font-size:12px; white-space:nowrap; }
+/* ===== 天气 ===== */
+.wx-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+.wx-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
+.wx-card .place { font-weight:700; margin-bottom:6px; }
+.wx-card .temp { font-size:20px; font-weight:800; color:var(--blue); }
+.wx-card .desc { font-size:12px; color:var(--muted); margin-top:4px; }
+/* ===== 地图 ===== */
+.map-section { max-width:1080px; margin:0 auto; padding:34px 18px 8px; }
+.map-card { background:var(--card-bg); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+.map-tabs { display:flex; overflow-x:auto; background:#f8f6f4; border-bottom:1px solid var(--border); }
+.map-tab { flex:1; min-width:96px; padding:12px 6px; border:none; background:transparent; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; }
+.map-tab.active { color:var(--accent); border-bottom-color:var(--accent); background:#fff; }
+.map-body { position:relative; }
+.map-container { width:100%; height:440px; background:#e8ecef; }
+.map-legend { position:absolute; top:10px; right:10px; z-index:2; background:rgba(255,255,255,.92); border-radius:10px; padding:8px 10px; font-size:11px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:flex; flex-direction:column; gap:4px; }
+.map-legend .lg-item { display:flex; align-items:center; gap:6px; }
+.lg-dot { width:10px; height:10px; border-radius:50%; }
+.lg-sight{background:var(--cat-sight);} .lg-food{background:var(--cat-food);} .lg-culture{background:var(--cat-culture);} .lg-shop{background:var(--cat-shop);} .lg-night{background:var(--cat-night);}
+.map-note { padding:8px 14px; font-size:12px; color:var(--muted); background:#faf8f6; border-top:1px solid var(--border); }
+/* ===== 每日行程 ===== */
+.day-block { background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:22px 18px; margin-bottom:18px; box-shadow:var(--shadow); }
+.day-head { display:flex; align-items:baseline; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.day-badge { background:var(--accent); color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:12px; }
+.day-title { font-size:18px; font-weight:800; }
+.day-sub { font-size:12px; color:var(--muted); }
+.tl-item { display:flex; gap:12px; padding:10px 0; }
+.tl-dot { width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(192,57,43,.15); margin-top:6px; flex-shrink:0; }
+.tl-time { width:58px; flex-shrink:0; font-size:13px; font-weight:700; color:var(--blue); padding-top:2px; }
+.tl-content { flex:1; background:var(--paper); border:1px solid var(--border); border-radius:12px; padding:12px 14px; cursor:pointer; transition:all .2s; }
+.tl-content:hover { transform:translateX(3px); box-shadow:var(--shadow); }
+.tl-content.hl { border-color:var(--accent2); box-shadow:0 0 0 2px rgba(99,91,255,.25); }
+.tl-place { font-weight:700; font-size:15px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.tl-seq { width:20px; height:20px; border-radius:50%; color:#fff; font-size:11px; display:inline-flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
+.seq-sight{background:var(--cat-sight);} .seq-food{background:var(--cat-food);} .seq-culture{background:var(--cat-culture);} .seq-shop{background:var(--cat-shop);} .seq-night{background:var(--cat-night);}
+.tl-desc { font-size:13px; color:#3d4557; margin-top:5px; }
+.tl-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.tag { font-size:11px; padding:2px 9px; border-radius:10px; font-weight:600; }
+.tag-sight{background:#eef2ff;color:#4338ca;} .tag-food{background:#fffbeb;color:#b45309;} .tag-culture{background:#ecfdf5;color:#047857;} .tag-shop{background:#fdf2f8;color:#be185d;} .tag-night{background:#f5f3ff;color:#6d28d9;}
+.tag-tip{background:#fff7ed;color:#c2410c;} .tag-cost{background:#eff6ff;color:#1d4ed8;}
+.day-alert { margin-top:12px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:10px 14px; font-size:13px; color:#92400e; }
+.day-alert b { color:#b45309; }
+/* ===== 住宿 ===== */
+.hotel-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.hotel-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
+.hotel-card .h-name { font-weight:700; font-size:15px; }
+.hotel-card .h-tag { display:inline-block; font-size:11px; background:#fff1f2; color:#be123c; padding:2px 8px; border-radius:8px; margin:6px 0; }
+.hotel-card .h-price { font-size:14px; font-weight:700; color:var(--green); }
+.hotel-card .h-desc { font-size:12px; color:var(--muted); margin-top:6px; }
+/* ===== 预算 ===== */
+.budget-table { width:100%; border-collapse:collapse; background:var(--card-bg); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); font-size:14px; }
+.budget-table th { background:#f8f6f4; padding:10px 12px; text-align:left; font-size:13px; }
+.budget-table td { padding:10px 12px; border-top:1px solid var(--border); }
+.budget-table tr.total td { background:#fff7ed; font-weight:800; font-size:15px; }
+.budget-table .amt { text-align:right; font-weight:700; color:var(--accent); white-space:nowrap; }
+/* ===== 贴士 ===== */
+.tips-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.tip-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
+.tip-card .t-title { font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+.tip-card ul { list-style:none; }
+.tip-card li { font-size:13px; color:#3d4557; padding:3px 0 3px 16px; position:relative; }
+.tip-card li::before { content:"▸"; position:absolute; left:2px; color:var(--accent); }
+/* ===== Footer ===== */
+.footer { text-align:center; padding:28px 16px 40px; color:var(--muted); font-size:12px; }
+@media (max-width:768px) {
+  .map-container { height:300px; }
+  .tl-time { width:52px; }
+  .map-legend { font-size:10px; padding:6px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. HERO -->
+<div class="hero">
+  <div class="hero-tag">NATURE · TREK · PHOTO · CULTURE</div>
+  <h1>成都·九寨·黄龙·四姑娘·峨眉<br>5日特种兵徒步摄影环线</h1>
+  <div class="hero-sub">1人 · 长沙出发 · 8.21(周五)下班飞成都 → 8.26(周三)夜返长沙 · 高铁+拼车+直通车全程公共交通，五天扫遍川西两大世界遗产+三星堆+双桥沟+峨眉金顶，为徒步与拍照而生</div>
+  <div class="hero-meta">
+    <span>5天6晚 · 5大景区</span>
+    <span>预算约 ¥5,400</span>
+    <span>长沙出发</span>
+    <span>高铁×4程 + 拼车×3程</span>
+  </div>
+</div>
+
+<!-- 2. 行程概览 -->
+<div class="section">
+  <div class="section-title">行程概览</div>
+  <div class="ov-grid">
+    <div class="ov-card"><div class="num">5</div><div class="lbl">大景区全扫</div></div>
+    <div class="ov-card"><div class="num">≈40km</div><div class="lbl">景区内徒步</div></div>
+    <div class="ov-card"><div class="num">¥5,400</div><div class="lbl">总预算(1人)</div></div>
+    <div class="ov-card"><div class="num">2900m+</div><div class="lbl">最高海拔金顶</div></div>
+    <div class="ov-card"><div class="num">21:30后</div><div class="lbl">返程选双流晚班机</div></div>
+  </div>
+  <div class="route-flow">
+    <div class="rf-item"><span class="rf-icon rf-1">✈</span><b>D0 8/21 周五晚</b><span>长沙黄花 → 成都双流，宿春熙路</span><span class="rf-way">航班约2h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-2">🚄</span><b>D1 8/22 周六</b><span>成都东 → 黄龙九寨站(高铁) → 黄龙 → 九寨沟口</span><span class="rf-way">高铁1h45m+接驳3h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-1">🏞</span><b>D2 8/23 周日</b><span>九寨沟全天徒步（日则沟→则查洼沟→树正沟）</span><span class="rf-way">景区内观光车+徒步</span></div>
+    <div class="rf-item"><span class="rf-icon rf-3">🏛</span><b>D3 8/24 周一</b><span>九寨沟口 → 高铁回成都 → 三星堆博物馆 → 成都夜火锅</span><span class="rf-way">高铁2h+城际40m</span></div>
+    <div class="rf-item"><span class="rf-icon rf-2">🏔</span><b>D4 8/25 周二</b><span>成都 → 四姑娘山双桥沟（1日特种兵）→ 夜返成都</span><span class="rf-way">拼车往返约10h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-1">⛰</span><b>D5 8/26 周三</b><span>成都 → 峨眉山金顶 → 返成都 → 双流机场 ✈ 长沙</span><span class="rf-way">动车1h+景区3h</span></div>
+  </div>
+</div>
+
+<!-- 3. 天气参考 -->
+<div class="section">
+  <div class="section-title">天气参考（8月下旬）</div>
+  <div class="wx-grid">
+    <div class="wx-card"><div class="place">成都</div><div class="temp">22~31℃</div><div class="desc">阵雨为主 · 短袖+雨具</div></div>
+    <div class="wx-card"><div class="place">九寨沟</div><div class="temp">13~30℃</div><div class="desc">多云间晴偶阵雨 · 温差12℃+ · 紫外线强</div></div>
+    <div class="wx-card"><div class="place">黄龙</div><div class="temp">8~20℃</div><div class="desc">海拔3900m · 防风外套 · 防高反</div></div>
+    <div class="wx-card"><div class="place">四姑娘山</div><div class="temp">18~27℃</div><div class="desc">多云 · 双桥沟沟内偏凉</div></div>
+    <div class="wx-card"><div class="place">峨眉山金顶</div><div class="temp">12~18℃</div><div class="desc">山顶薄羽绒/冲锋衣 · 雨衣比伞实用 · 云海概率高</div></div>
+  </div>
+</div>
+
+<!-- 4. 路线地图 -->
+<div class="map-section">
+  <div class="map-card">
+    <div class="map-tabs" id="mapTabs">
+      <button class="map-tab active" onclick="switchMapDay(0)">DAY1 黄龙</button>
+      <button class="map-tab" onclick="switchMapDay(1)">DAY2 九寨沟</button>
+      <button class="map-tab" onclick="switchMapDay(2)">DAY3 三星堆</button>
+      <button class="map-tab" onclick="switchMapDay(3)">DAY4 四姑娘</button>
+      <button class="map-tab" onclick="switchMapDay(4)">DAY5 峨眉山</button>
+    </div>
+    <div class="map-body">
+      <div id="map-container" class="map-container">
+        <div class="map-legend">
+          <div class="lg-item"><span class="lg-dot lg-sight"></span>景点</div>
+          <div class="lg-item"><span class="lg-dot lg-food"></span>美食</div>
+          <div class="lg-item"><span class="lg-dot lg-culture"></span>文化</div>
+          <div class="lg-item"><span class="lg-dot lg-shop"></span>购物</div>
+          <div class="lg-item"><span class="lg-dot lg-night"></span>夜生活</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-note">💡 点击地图标记或下方行程卡片 → 地图飞行定位并弹出信息窗；点击 DAY Tab 切换当日路线。</div>
+  </div>
+</div>
+
+<!-- 5. 每日行程 -->
+<div class="section" id="itinerary-section">
+  <div class="section-title">每日行程（特种兵时间轴）</div>
+  <div id="itinerary-content"></div>
+</div>
+
+<!-- 6. 住宿推荐 -->
+<div class="section">
+  <div class="section-title">住宿推荐</div>
+  <div class="hotel-grid">
+    <div class="hotel-card">
+      <div class="h-name">成都 · 春熙路/天府广场经济连锁</div>
+      <span class="h-tag">D0/D3/D4 共3晚</span>
+      <div class="h-price">约 ¥150-220/晚</div>
+      <div class="h-desc">推荐住春熙路地铁口：地铁2号线直达成都东站，吃火锅宵夜方便。青旅床位¥60-90更省。总预算约¥500-600。</div>
+    </div>
+    <div class="hotel-card">
+      <div class="h-name">九寨沟口 · 漳扎镇藏式客栈</div>
+      <span class="h-tag">D1/D2 共2晚</span>
+      <div class="h-price">约 ¥120-200/晚</div>
+      <div class="h-desc">选沟口步行10分钟内客栈，D2一早7:00进沟不排队。藏式木屋+地暖，旺季务必提前2周订。总预算约¥300-400。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. 费用预估 -->
+<div class="section">
+  <div class="section-title">费用预估（1人 · 中等预算）</div>
+  <table class="budget-table">
+    <tr><th>项目</th><th>明细</th><th class="amt">金额</th></tr>
+    <tr><td>✈ 机票</td><td>长沙⇄成都往返（提前订，8月底回落）</td><td class="amt">¥1,400</td></tr>
+    <tr><td>🚄 高铁</td><td>成都东⇄黄龙九寨 ¥143×2；成都⇄三星堆 ¥60×2；成都⇄峨眉山 ¥65×2</td><td class="amt">¥536</td></tr>
+    <tr><td>🚐 接驳</td><td>黄龙九寨站→黄龙¥50 + 黄龙→九寨沟口¥60 + 沟口→车站¥60 + 峨眉山站打车¥60</td><td class="amt">¥230</td></tr>
+    <tr><td>🚗 拼车</td><td>成都⇄四姑娘山往返（1人拼车）</td><td class="amt">¥280</td></tr>
+    <tr><td>🎫 门票</td><td>九寨沟¥190+观光车¥90｜黄龙¥170+索道上¥80｜三星堆¥72｜双桥沟¥80+观光车¥70｜峨眉山¥160+观光车¥90+金顶索道¥120</td><td class="amt">¥1,122</td></tr>
+    <tr><td>🏨 住宿</td><td>成都3晚×¥200 + 九寨沟口2晚×¥180</td><td class="amt">¥960</td></tr>
+    <tr><td>🍜 餐饮</td><td>6天×¥120（高原景区物价较高）</td><td class="amt">¥720</td></tr>
+    <tr><td>🎒 杂项</td><td>氧气瓶/雨衣/防晒/零食</td><td class="amt">¥150</td></tr>
+    <tr class="total"><td>合计</td><td>弹性区间（机票浮动±300，索道可选徒步省¥80）</td><td class="amt">≈¥5,400</td></tr>
+  </table>
+</div>
+
+<!-- 8. 实用贴士 -->
+<div class="section">
+  <div class="section-title">实用贴士</div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="t-title">🎫 预约与限流（必看）</div>
+      <ul>
+        <li>九寨沟旺季限流：提前7天在"阿坝旅游网"/官方小程序抢票（¥190+观光车¥90）</li>
+        <li>三星堆提前3天预约¥72；暑假延时至20:00闭馆、18:00停止入园</li>
+        <li>峨眉山可当天购票；金顶索道17:30前下行</li>
+        <li>双桥沟观光车最晚约16:30出沟，控制游玩时间</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="t-title">🏔 高反与防护</div>
+      <ul>
+        <li>黄龙最高3900m、九寨长海3100m：出发前1周可服红景天，缓步走</li>
+        <li>黄龙九寨站海拔2977m，出站放慢动作，备便携氧气瓶¥15-25</li>
+        <li>高原紫外线强：防晒霜+墨镜+遮阳帽（拍照也保护镜头）</li>
+        <li>早晚温差15℃+：洋葱式穿衣，白天短袖+防晒衣，早晚抓绒</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="t-title">📷 摄影机位（摄影师向）</div>
+      <ul>
+        <li>九寨五花海：上午10点前顺光，湖水蓝绿分层最艳</li>
+        <li>珍珠滩瀑布：广角+慢门，ND镜拍丝绸水流</li>
+        <li>黄龙五彩池：上午光线好钙华池色彩饱和；金沙铺地长焦压缩</li>
+        <li>双桥沟布达拉峰：下午顺光雪山；四姑娜措拍倒影</li>
+        <li>金顶十方普贤：云海+金殿对称构图；三星堆馆内高ISO禁闪光</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="t-title">🚄 交通细节</div>
+      <ul>
+        <li>高铁票12306提前抢（旺季去九寨的车票紧俏，往返都要提前3-5天）</li>
+        <li>黄龙九寨站接驳：微信小程序"九旅悦行"订景区直通车，与高铁时刻衔接</li>
+        <li>四姑娘山拼车：成都集合点/茶店子，约¥130-160/人单程，可请客栈代订</li>
+        <li>返程航班务必选成都双流机场21:30后班次（天府机场离市区1h+太远）</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="t-title">🍜 吃在川西</div>
+      <ul>
+        <li>成都：火锅（蜀大侠/大龙燚）、串串（钢管厂五区）、龙抄手、钟水饺</li>
+        <li>九寨沟口：牦牛肉火锅、青稞饼、酥油茶、藏式酸奶</li>
+        <li>四姑娘山镇：牦牛汤锅、藏家柴火鸡（午餐解决）</li>
+        <li>峨眉山脚下：峨眉豆腐脑、叶儿粑、乐山钵钵鸡</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <div class="t-title">⚠️ 特种兵风险提示</div>
+      <ul>
+        <li>本行程每天早出晚归（D1/D4/D5都是6:00-6:30起床），体力消耗大</li>
+        <li>如遇高反/天气不佳：D4四姑娘山为"弹性项"，可临时放弃改为成都休整</li>
+        <li>峨眉山金顶遇大雾看不到云海属正常，调整心态</li>
+        <li>雨衣比雨伞管用（峡谷横风），相机带防水袋</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  数据来源：铁路12306/同程时刻表 · 中国天气网 · 各景区官方 · 腾讯位置服务<br>
+  生成时间：2026-08-20 · 旅行攻略生成V2 · 价格以出行当日为准
+</div>
+
+<script>
+/* ========== 数据 ========== */
+const CAT = { sight:'sight', food:'food', culture:'culture', shop:'shop', night:'night' };
+const CAT_CN = { sight:'景点', food:'美食', culture:'文化', shop:'购物', night:'夜生活' };
+const dayData = [
+  {
+    name:'DAY 1 · 高铁进山·黄龙瑶池', date:'8/22 周六', center:[32.74,103.83],
+    pois:[
+      { cat:'sight', name:'成都东站', lat:30.6320, lng:104.1400, time:'06:30', cost:'高铁¥143', desc:'地铁2号线到成都东站，乘坐 C5782 次（06:45发），1小时45分钟直达黄龙九寨站，二等座¥143。', tip:'提前3-5天12306抢票，旺季早班车最抢手' },
+      { cat:'sight', name:'黄龙九寨站', lat:32.7850, lng:103.6520, time:'08:30', cost:'接驳¥50', desc:'海拔2977m高原站。出站换"九旅悦行"景区直通车或拼车（¥50-60）约1小时到黄龙景区。出站缓行防高反。', tip:'直通车按高铁时刻发车，小程序可订' },
+      { cat:'sight', name:'黄龙风景区', lat:32.7397, lng:103.8346, time:'10:00-15:00', cost:'门票¥170+索道¥80', desc:'世界自然遗产，钙华彩池之王。索道上山（10min）→五彩池→黄龙寺→金沙铺地→争艳池，徒步下山约4小时。海拔3100-3900m，是全程高反压力最大的点。', tip:'五彩池上午顺光最艳；缓步走备氧气瓶' },
+      { cat:'food', name:'黄龙景区简餐', lat:32.7380, lng:103.8330, time:'12:30', cost:'¥40', desc:'景区内餐厅或自带路餐。高海拔食欲差，备巧克力/能量棒。', tip:'热水供应有限，保温杯必备' },
+      { cat:'sight', name:'九寨沟口·漳扎镇', lat:33.2800, lng:103.9000, time:'17:30', cost:'拼车¥60', desc:'黄龙游玩后拼车/直通车约2小时到九寨沟口漳扎镇，入住藏式客栈。晚上逛漳扎镇，吃牦牛肉火锅。', tip:'客栈选沟口步行10分钟内，明早7:00进沟' },
+      { cat:'food', name:'牦牛肉火锅（漳扎镇）', lat:33.2820, lng:103.9020, time:'19:00', cost:'¥90', desc:'藏式牦牛肉火锅+青稞饼+酥油茶，高原一天最治愈的一顿。', tip:'火锅店8-9点排队，早点去' }
+    ]
+  },
+  {
+    name:'DAY 2 · 九寨沟全天徒步', date:'8/23 周日', center:[33.15,103.92],
+    pois:[
+      { cat:'sight', name:'九寨沟景区大门', lat:33.2580, lng:103.9170, time:'07:00', cost:'门票¥190+观光车¥90', desc:'提前7天预约门票。7:00开门即进沟，观光车直达日则沟最深处原始森林，由上往下徒步，避开人群。', tip:'早进沟光线柔、人少，拍照黄金2小时' },
+      { cat:'sight', name:'五花海', lat:33.1470, lng:103.9390, time:'08:30', cost:'含门票', desc:'九寨沟精华之最，湖水蓝绿分层，枯木沉水清晰可见。沿栈道绕湖半圈找机位。', tip:'上午10点前顺光，湖面倒影最佳' },
+      { cat:'sight', name:'珍珠滩瀑布', lat:33.1350, lng:103.9300, time:'09:30', cost:'含门票', desc:'《西游记》片尾取景地，宽阔钙华滩+瀑布群，慢门拍水流绝佳。', tip:'广角+ND镜，栈道下方是经典机位' },
+      { cat:'food', name:'诺日朗餐厅', lat:33.1620, lng:103.9020, time:'12:00', cost:'¥50', desc:'沟内唯一大餐厅（自助餐¥60/人）或自带路餐。饭后看诺日朗瀑布。', tip:'旺季人巨多，错峰12:30后进' },
+      { cat:'sight', name:'诺日朗瀑布', lat:33.1630, lng:103.9010, time:'13:00', cost:'含门票', desc:'中国最宽钙华瀑布（宽270m），"Y"字形沟的三沟交汇处。', tip:'观景台全景+栈道近景两个机位' },
+      { cat:'sight', name:'长海', lat:33.1060, lng:103.8850, time:'14:00', cost:'含门票', desc:'九寨沟海拔最高(3100m)、最大海子，雪山环抱，水色墨蓝。', tip:'长海观景台大景深构图，雪山倒影' },
+      { cat:'sight', name:'五彩池', lat:33.1100, lng:103.8890, time:'14:40', cost:'含门票', desc:'九寨最小却最艳的海子，池水五色斑斓，从长海步行800m可达。', tip:'正午到下午光线直射时颜色最饱和' },
+      { cat:'sight', name:'树正群海', lat:33.1850, lng:103.9180, time:'15:30', cost:'含门票', desc:'几十个海子层层叠叠，树正瀑布+磨坊藏寨，最后一条沟的收尾。', tip:'树正寨观景台可以拍全景；17:00前出沟' }
+    ]
+  },
+  {
+    name:'DAY 3 · 高铁返蓉·三星堆探秘', date:'8/24 周一', center:[30.90,104.05],
+    pois:[
+      { cat:'sight', name:'九寨沟口出发', lat:33.2800, lng:103.9000, time:'08:00', cost:'拼车¥60', desc:'拼车/直通车2小时到黄龙九寨站，赶10:06发车的 C5792 次高铁（12:31到成都东）。', tip:'若错过可坐11:46的 C5752 次（13:43到）' },
+      { cat:'sight', name:'成都东站', lat:30.6320, lng:104.1400, time:'12:31', cost:'—', desc:'出站午餐（站内快餐或附近川菜）。随后乘城际列车往三星堆站（约40分钟）。', tip:'成都东→三星堆站班次密集，随到随走' },
+      { cat:'culture', name:'三星堆博物馆', lat:31.0014, lng:104.2183, time:'15:30-19:00', cost:'门票¥72', desc:'世界级古蜀文明遗址。新馆三大展区：世纪逐梦、巍然王都、天地人神。必看：青铜大立人、青铜神树、黄金面具、青铜纵目面具。暑假延时至20:00闭馆。', tip:'提前3天官网预约；馆内禁闪光灯，高ISO拍摄' },
+      { cat:'culture', name:'三星堆文物修复馆', lat:31.0000, lng:104.2160, time:'17:00', cost:'含门票', desc:'隔着玻璃看文物修复师工作，了解考古修复过程。', tip:'17:00后延时开放区域人少' },
+      { cat:'food', name:'成都火锅（春熙路）', lat:30.6570, lng:104.0810, time:'20:00', cost:'¥110', desc:'从三星堆站回成都东，地铁到春熙路。蜀大侠/大龙燚安排一顿资格火锅，犒劳前两天的辛苦。', tip:'鸳鸯锅底，微辣起步' },
+      { cat:'night', name:'太古里·九眼桥夜景', lat:30.6560, lng:104.0860, time:'21:30', cost:'¥30', desc:'饭后太古里/IFS打卡熊猫爬墙，或九眼桥酒吧街散步，为D4保存体力早点睡。', tip:'明早6:30出发四姑娘山，23:00前入睡' }
+    ]
+  },
+  {
+    name:'DAY 4 · 四姑娘山双桥沟（1日特种兵）', date:'8/25 周二', center:[31.00,102.85],
+    pois:[
+      { cat:'sight', name:'成都拼车出发', lat:30.6630, lng:104.0430, time:'06:30', cost:'拼车¥130-160', desc:'拼车/包车（客栈代订或川西拼车平台），经都江堰-卧龙-巴朗山隧道约4.5-5小时到四姑娘山镇。', tip:'备好晕车药，山路弯多；车上午睡保存体力' },
+      { cat:'food', name:'四姑娘山镇午餐', lat:31.0023, lng:102.8509, time:'11:30', cost:'¥60', desc:'镇上午餐，牦牛汤锅/藏家菜，吃饱再进沟。', tip:'镇上物价略高，可提前备干粮' },
+      { cat:'sight', name:'双桥沟景区', lat:30.9792, lng:102.7696, time:'12:30-17:00', cost:'门票¥80+观光车¥70', desc:'四姑娘山三条沟中最轻松、景观最集中的一条。观光车直达沟底红杉林(3800m)，再逐站下行徒步：红杉林→布达拉峰→四姑娜措→撵鱼坝→隆珠措→人参果坪。', tip:'全程约7km栈道徒步，雪山环绕，摄影天堂' },
+      { cat:'sight', name:'红杉林·冰川景观', lat:31.0960, lng:102.8060, time:'13:00', cost:'含门票', desc:'观光车终点，海拔3800m，近观冰川与雪山，红杉林原始森林。', tip:'高海拔缓行，拍照注意脚下' },
+      { cat:'sight', name:'布达拉峰', lat:31.0600, lng:102.7800, time:'13:50', cost:'含门票', desc:'形似布达拉宫的雪山，草甸+白塔+雪山的经典机位，下午顺光。', tip:'广角低机位拍雪山倒影' },
+      { cat:'sight', name:'四姑娜措', lat:31.0400, lng:102.7800, time:'14:30', cost:'含门票', desc:'双桥沟最美湖泊，雪山倒影如镜，枯木静立水中。', tip:'湖心亭机位，等风停拍镜面' },
+      { cat:'sight', name:'撵鱼坝·人参果坪', lat:30.9900, lng:102.7700, time:'15:30', cost:'含门票', desc:'草甸溪流段，牦牛散养，田园牧歌画面。人参果坪出沟前最后一站。', tip:'16:30前必须出沟，观光车末班' },
+      { cat:'night', name:'返程成都·夜宵', lat:30.6570, lng:104.0810, time:'22:00', cost:'拼车¥130-160', desc:'17:30拼车返程，约22:00-22:30到成都。若体力透支可改宿四姑娘山镇次日早回（会牺牲D5，慎选）。', tip:'回到成都先吃碗冰粉，好好睡一觉' }
+    ]
+  },
+  {
+    name:'DAY 5 · 峨眉金顶·返程长沙', date:'8/26 周三', center:[29.55,103.38],
+    pois:[
+      { cat:'sight', name:'成都南/东站出发', lat:30.6180, lng:104.0680, time:'06:30', cost:'动车¥65', desc:'乘最早班动车至峨眉山站（约1h-1h20m），出站打车20分钟到报国寺游客中心。', tip:'行李可寄存游客中心，轻装上山' },
+      { cat:'culture', name:'报国寺·峨眉山博物馆', lat:29.5680, lng:103.4690, time:'08:30', cost:'免费', desc:'峨眉山门户，入山第一寺。快速打卡后购票上山。', tip:'观光车售票处在此，往返雷洞坪¥90' },
+      { cat:'sight', name:'雷洞坪', lat:29.5250, lng:103.3350, time:'10:30', cost:'含观光车', desc:'观光车约2小时盘山到雷洞坪(2430m)，步行1.5km栈道到接引殿乘索道。', tip:'栈道段可远眺雪山，注意保暖' },
+      { cat:'sight', name:'金顶·十方普贤圣像', lat:29.5200, lng:103.3320, time:'11:20-14:30', cost:'索道往返¥120', desc:'金顶海拔3077m，十方普贤金像+金殿银殿+铜殿。晴天云海翻涌，是峨眉之巅。游览约3小时，含金顶绕行与祈福。', tip:'云海概率高；金顶温度12-18℃，薄羽绒' },
+      { cat:'sight', name:'金顶云海观景台', lat:29.5220, lng:103.3300, time:'12:30', cost:'含门票', desc:'观景台360°环视，远眺贡嘎雪山（天气好时）。', tip:'侧逆光拍云海层次最佳' },
+      { cat:'food', name:'雷洞坪简餐', lat:29.5240, lng:103.3360, time:'14:40', cost:'¥40', desc:'下山到雷洞坪午餐（面条/小吃），随后乘观光车下山。', tip:'控制时间，17:00前必须到山脚' },
+      { cat:'sight', name:'峨眉山站→成都', lat:29.6090, lng:103.5090, time:'17:30', cost:'动车¥65', desc:'17:00到报国寺取行李，打车到峨眉山站，乘17:30-18:00动车回成都（约19:00-19:30到）。', tip:'落地成都后直奔双流机场' },
+      { cat:'night', name:'成都双流机场 ✈ 长沙', lat:30.5780, lng:103.9470, time:'21:00后', cost:'机票¥700', desc:'选双流机场21:30后航班（务必避开天府机场！），约23:30-00:30抵达长沙黄花机场。特种兵行程收官。', tip:'提前值机选座；机场吃晚餐' }
+    ]
+  }
+];
+
+/* ========== 地图全局 ========== */
+let map = null, markerLayer = null, pl1 = null, pl2 = null, infoWindow = null;
+let currentMapDay = 0;
+
+function makeMarkerSvg(num, color) {
+  return 'data:image/svg+xml,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">'
+    + '<circle cx="16" cy="16" r="14" fill="' + color + '" stroke="#fff" stroke-width="2"/>'
+    + '<text x="16" y="21" text-anchor="middle" fill="white" font-size="14" font-weight="bold">' + num + '</text></svg>');
+}
+function catColor(cat) {
+  return { sight:'#6366f1', food:'#f59e0b', culture:'#10b981', shop:'#ec4899', night:'#8b5cf6' }[cat] || '#6366f1';
+}
+
+/* ========== 腾讯地图 ========== */
+function initMap() {
+  try {
+    map = new TMap.Map('map-container', {
+      center: new TMap.LatLng(30.65, 104.06),
+      zoom: 6,
+      mapStyleId: "style8"
+    });
+    infoWindow = new TMap.InfoWindow({ map, position: new TMap.LatLng(30.65,104.06), offset: { x: 0, y: -36 } });
+    infoWindow.close();
+    updateMap(0);
+  } catch(e) { renderFallbackMap(currentMapDay); }
+}
+
+function updateMap(dayIdx) {
+  if (!map || typeof TMap === 'undefined') { renderFallbackMap(dayIdx); return; }
+  try {
+    const pois = dayData[dayIdx].pois;
+    if (markerLayer) { markerLayer.setMap(null); markerLayer = null; }
+    if (pl1) { pl1.setMap(null); pl1 = null; }
+    if (pl2) { pl2.setMap(null); pl2 = null; }
+
+    const geometries = pois.map((p, i) => ({
+      id: 'm' + i,
+      styleId: 's' + i,
+      position: new TMap.LatLng(p.lat, p.lng)
+    }));
+    const styles = {};
+    pois.forEach((p, i) => { styles['s' + i] = new TMap.MarkerStyle({
+      width: 32, height: 32, anchor: { x: 16, y: 16 },
+      src: makeMarkerSvg(i + 1, catColor(p.cat))
+    }); });
+    markerLayer = new TMap.MultiMarker({ map, styles, geometries });
+    markerLayer.on('click', (e) => {
+      const idx = parseInt(e.geometry.id.replace('m',''), 10);
+      showInfoWindow(dayIdx, idx);
+    });
+
+    const paths = pois.map(p => new TMap.LatLng(p.lat, p.lng));
+    pl2 = new TMap.MultiPolyline({
+      map, styles: { 'stroke': new TMap.PolylineStyle({ color: 'rgba(30,58,138,0.65)', width: 8, borderWidth: 0, lineCap: 'round', lineJoin: 'round' }) },
+      geometries: [{ id: 's', styleId: 'stroke', paths }]
+    });
+    pl1 = new TMap.MultiPolyline({
+      map, styles: { 'fill': new TMap.PolylineStyle({ color: 'rgba(59,130,246,0.85)', width: 4, borderWidth: 0, lineCap: 'round', lineJoin: 'round' }) },
+      geometries: [{ id: 'f', styleId: 'fill', paths }]
+    });
+
+    let minLat=90,maxLat=-90,minLng=180,maxLng=-180;
+    pois.forEach(p => { minLat=Math.min(minLat,p.lat); maxLat=Math.max(maxLat,p.lat); minLng=Math.min(minLng,p.lng); maxLng=Math.max(maxLng,p.lng); });
+    const pad = 0.15;
+    map.fitBounds(new TMap.LatLngBounds(new TMap.LatLng(minLat-pad, minLng-pad), new TMap.LatLng(maxLat+pad, maxLng+pad)));
+  } catch(e) { renderFallbackMap(dayIdx); }
+}
+
+function showInfoWindow(dayIdx, poiIdx) {
+  if (!map || typeof TMap === 'undefined') { return; }
+  try {
+    const p = dayData[dayIdx].pois[poiIdx];
+    infoWindow.setPosition(new TMap.LatLng(p.lat, p.lng));
+    infoWindow.setContent('<div style="padding:10px 14px;font-family:-apple-system,\'PingFang SC\',sans-serif;max-width:260px">'
+      + '<div style="font-weight:700;font-size:14px;color:#1a1f36">' + (poiIdx+1) + '. ' + p.name + '</div>'
+      + '<div style="font-size:11px;color:#697386;margin:4px 0">⏰ ' + p.time + '</div>'
+      + '<div style="font-size:12px;color:#3d4557;line-height:1.5">' + p.desc + '</div>'
+      + (p.tip ? '<div style="font-size:11px;color:#c2410c;margin-top:6px">📷 ' + p.tip + '</div>' : '')
+      + '</div>');
+    infoWindow.open();
+  } catch(e) {}
+}
+
+function focusPoi(dayIdx, poiIdx) {
+  try {
+    if (dayIdx !== currentMapDay) switchMapDay(dayIdx, true);
+    if (map && typeof TMap !== 'undefined') {
+      const p = dayData[dayIdx].pois[poiIdx];
+      map.easeTo({ center: new TMap.LatLng(p.lat, p.lng), zoom: 13 }, { duration: 800 });
+      showInfoWindow(dayIdx, poiIdx);
+    }
+  } catch(e) { renderFallbackMap(dayIdx); }
+  document.querySelectorAll('.tl-content').forEach(el => el.classList.remove('hl'));
+  const cards = document.querySelectorAll('#itinerary-content .tl-content');
+  if (cards[poiIdx]) cards[poiIdx].classList.add('hl');
+}
+
+function switchMapDay(dayIdx, silent) {
+  currentMapDay = dayIdx;
+  document.querySelectorAll('.map-tab').forEach((t, i) => t.classList.toggle('active', i === dayIdx));
+  renderItinerary(dayIdx);
+  if (!silent) {
+    const sec = document.getElementById('itinerary-section');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  if (map && typeof TMap !== 'undefined') { updateMap(dayIdx); }
+  else { renderFallbackMap(dayIdx); }
+}
+
+/* ========== 行程渲染 ========== */
+function renderItinerary(dayIdx) {
+  const d = dayData[dayIdx];
+  let html = '<div class="day-block">'
+    + '<div class="day-head"><span class="day-badge">' + d.name.split('·')[0] + '</span>'
+    + '<span class="day-title">' + d.name + '</span><span class="day-sub">' + d.date + '</span></div>';
+  d.pois.forEach((p, i) => {
+    html += '<div class="tl-item">'
+      + '<div class="tl-dot"></div>'
+      + '<div class="tl-time">' + p.time.split('-')[0] + '</div>'
+      + '<div class="tl-content" onclick="focusPoi(' + dayIdx + ',' + i + ')">'
+      + '<div class="tl-place"><span class="tl-seq seq-' + p.cat + '">' + (i+1) + '</span>' + p.name + '</div>'
+      + '<div class="tl-desc">' + p.desc + '</div>'
+      + '<div class="tl-tags">'
+      + '<span class="tag tag-' + p.cat + '">' + CAT_CN[p.cat] + '</span>'
+      + (p.tip ? '<span class="tag tag-tip">📷 ' + p.tip + '</span>' : '')
+      + (p.cost ? '<span class="tag tag-cost">💰 ' + p.cost + '</span>' : '')
+      + '</div></div></div>';
+  });
+  if (d.alert) html += '<div class="day-alert">' + d.alert + '</div>';
+  html += '</div>';
+  document.getElementById('itinerary-content').innerHTML = html;
+}
+
+/* ========== 降级：Leaflet ========== */
+function renderFallbackMap(dayIdx) {
+  loadLeafletAssets(
+    function(){ renderLeafletMap(dayIdx); },
+    function(){ renderStaticFallbackMap(dayIdx); }
+  );
+}
+function loadLeafletAssets(onReady, onError) {
+  if (window.L && document.getElementById('leaflet-css')) { onReady(); return; }
+  const css = document.createElement('link');
+  css.id = 'leaflet-css'; css.rel = 'stylesheet';
+  css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+  document.head.appendChild(css);
+  const s = document.createElement('script');
+  s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  s.onload = onReady; s.onerror = onError;
+  document.head.appendChild(s);
+}
+function renderLeafletMap(dayIdx) {
+  try {
+    if (!window.L) { renderStaticFallbackMap(dayIdx); return; }
+    const el = document.getElementById('map-container');
+    el.innerHTML = '';
+    const d = dayData[dayIdx];
+    const lmap = L.map('map-container');
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OSM' }).addTo(lmap);
+    const latlngs = d.pois.map(p => [p.lat, p.lng]);
+    d.pois.forEach((p, i) => {
+      L.marker([p.lat, p.lng]).addTo(lmap)
+        .bindPopup('<b>' + (i+1) + '. ' + p.name + '</b><br>⏰ ' + p.time + '<br>' + p.desc);
+    });
+    L.polyline(latlngs, { color: '#3b82f6', weight: 4 }).addTo(lmap);
+    lmap.fitBounds(latlngs, { padding: [30, 30] });
+  } catch(e) { renderStaticFallbackMap(dayIdx); }
+}
+function renderStaticFallbackMap(dayIdx) {
+  try {
+    const d = dayData[dayIdx];
+    const el = document.getElementById('map-container');
+    let minLat=90,maxLat=-90,minLng=180,maxLng=-180;
+    d.pois.forEach(p => { minLat=Math.min(minLat,p.lat); maxLat=Math.max(maxLat,p.lat); minLng=Math.min(minLng,p.lng); maxLng=Math.max(maxLng,p.lng); });
+    const W = 640, H = 380, pad = 30;
+    const xf = x => pad + (x - minLng) / (maxLng - minLng || 1) * (W - 2*pad);
+    const yf = y => H - pad - (y - minLat) / (maxLat - minLat || 1) * (H - 2*pad);
+    let pts = d.pois.map(p => xf(p.lng).toFixed(1) + ',' + yf(p.lat).toFixed(1));
+    let html = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:100%;background:#eef2f7">'
+      + '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round"/>';
+    d.pois.forEach((p, i) => {
+      const cx = xf(p.lng), cy = yf(p.lat);
+      html += '<circle cx="' + cx + '" cy="' + cy + '" r="13" fill="' + catColor(p.cat) + '" stroke="#fff" stroke-width="2"/>'
+        + '<text x="' + cx + '" y="' + (cy+4) + '" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">' + (i+1) + '</text>'
+        + '<text x="' + cx + '" y="' + (cy+28) + '" text-anchor="middle" font-size="10" fill="#1a1f36">' + p.name + '</text>';
+    });
+    html += '</svg>';
+    el.innerHTML = html;
+  } catch(e) { document.getElementById('map-container').innerHTML = '<div style="padding:40px;text-align:center;color:#697386">地图加载失败，请联网后刷新</div>'; }
+}
+
+/* ========== 初始化（黄金方案） ========== */
+document.addEventListener('DOMContentLoaded', function() {
+  renderItinerary(0);
+  if (location.protocol === 'file:') {
+    renderFallbackMap(0);
+    return;
+  }
+  const script = document.createElement('script');
+  script.src = 'https://map.qq.com/api/gljs?v=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&callback=initMap';
+  script.onerror = function() { renderFallbackMap(currentMapDay); };
+  document.body.appendChild(script);
+  setTimeout(function() { if (!map) renderFallbackMap(0); }, 3000);
+});
+</script>
+</body>
+</html>
