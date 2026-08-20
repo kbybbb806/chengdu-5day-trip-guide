@@ -211,16 +211,9 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 </div>
 
 <div class="section">
-  <div class="section-title">住宿推荐 <span style="font-size:13px;color:var(--muted);font-weight:500">（<span id="paxInlineLabel">1人</span>）</span></div>
-  <div class="pax-toggle">
-    <span class="pax-label">出行人数：</span>
-    <button class="pax-btn active" data-pax="1" onclick="setPax(1)">1人</button>
-    <button class="pax-btn" data-pax="2" onclick="setPax(2)">2人</button>
-    <button class="pax-btn" data-pax="3" onclick="setPax(3)">3人</button>
-    <button class="pax-btn" data-pax="4" onclick="setPax(4)">4人+</button>
-  </div>
+  <div class="section-title">住宿推荐</div>
   <div class="hotel-grid" id="hotelGrid"></div>
-  <div style="font-size:12px;color:var(--muted);margin-top:8px">💡 房型自动按人数切换（1人大床，2+人双床）；实际入住的酒店请到上方"每日行程"点击酒店名搜索更换</div>
+  <div style="font-size:12px;color:var(--muted);margin-top:8px">💡 实际入住的酒店请到上方"每日行程"点击酒店名搜索更换</div>
 </div>
 
 <div class="section">
@@ -288,9 +281,6 @@ let pax = parseInt(localStorage.getItem(LS_PAX) || '1');
 function setPax(n) {
   pax = n;
   try { localStorage.setItem(LS_PAX, String(n)); } catch(e){}
-  const lbl = n >= 4 ? '4人+' : n + '人';
-  document.getElementById('paxInlineLabel').textContent = lbl;
-  document.querySelectorAll('.pax-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.pax) === n || (n >= 4 && b.dataset.pax === '4')));
   renderHotelRecs();
 }
 function getRoomType() { return pax >= 2 ? '双床房' : '大床房'; }
@@ -316,7 +306,7 @@ function renderHotelRecs() {
     '<div class="hotel-card2">' +
     '<div class="h-name">' + h.name + '</div>' +
     '<span class="h-tag">' + h.tag + '</span>' +
-    '<div class="h-price"><span class="room-type">' + room + '</span>' + (h.prices[room] || '') + '/晚</div>' +
+    '<div class="h-price">' + (h.prices[room] || '') + '/晚</div>' +
     '<div class="h-desc">' + h.desc + '</div>' +
     '</div>'
   ).join('');
