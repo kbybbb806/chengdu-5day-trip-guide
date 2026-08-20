@@ -512,7 +512,7 @@ function getHotel(key, def) {
     }
   } catch(e){}
   // 沿用前一日同位置酒店（自动延续）
-  const inheritMap = { 'd2_start':'d1_end', 'd3_start':'d2_end', 'd4_start':'d3_end', 'd5_start':'d4_end' };
+  const inheritMap = { 'd2_start':'d1_end', 'd2_end':'d1_start', 'd3_start':'d2_end', 'd4_start':'d3_end', 'd5_start':'d4_end' };
   if (inheritMap[key]) {
     const prevKey = inheritMap[key];
     try {
@@ -780,6 +780,7 @@ function doHotelSearch(key, keyword, hk) {
   target.innerHTML = '<div class="hd-empty">🔍 搜索中...</div>';
   label.style.display = 'block';
   // 优先用 TMap.service.Search（前端，无需额外key）
+  let usedApi = false;
   if (typeof TMap !== 'undefined' && TMap.service && TMap.service.Search) {
     try {
       const search = new TMap.service.Search({ pageSize: 8 });
@@ -788,31 +789,60 @@ function doHotelSearch(key, keyword, hk) {
       if (refLoc) params.referenceLocation = refLoc;
       const p = search.searchRegion(params);
       if (p && p.then) {
+        usedApi = true;
         p.then(function(res) {
           const list = (res && res.data) ? res.data : [];
-          if (list.length) {
-            const cs = list.map(it => ({ name: it.title || it.name, lat: it.location ? it.location.lat : (it.lat || 0), lng: it.location ? it.location.lng : (it.lng || 0), address: it.address || it.city || '' }));
-            // 过滤掉0坐标
-            target.innerHTML = cs.filter(c => c.lat && c.lng).map((c, i) => renderOpt(key, c, i, 'srch')).join('') || '<div class="hd-empty">无搜索结果</div>';
-            // 保存到全局供selectHotel使用
-            window['_hd_srch_' + key] = cs;
+          const apiCs = list.map(it => ({ name: it.title || it.name, lat: it.location ? it.location.lat : (it.lat || 0), lng: it.location ? it.location.lng : (it.lng || 0), address: it.address || it.city || '' }))
+            .filter(c => c.lat && c.lng);
+          // API 有结果就用 API，否则降级跨所有预置候选做模糊匹配
+          if (apiCs.length) {
+            target.innerHTML = apiCs.map((c, i) => renderOpt(key, c, i, 'srch')).join('');
+            window['_hd_srch_' + key] = apiCs;
           } else {
-            target.innerHTML = '<div class="hd-empty">未找到 "' + esc(keyword) + '" 相关酒店，可手动补充</div>';
-            window['_hd_srch_' + key] = [];
+            renderFallbackHotelSearch(key, keyword, target);
           }
-        }).catch(function(e) {
-          target.innerHTML = '<div class="hd-empty">搜索失败：' + esc(e && e.message || '未知错误') + '</div>';
-          window['_hd_srch_' + key] = [];
+        }).catch(function() {
+          renderFallbackHotelSearch(key, keyword, target);
         });
         return;
       }
     } catch(e) { /* 走降级 */ }
   }
-  // 降级：用预置候选做模糊匹配
-  const recs = getRecommend(hk).filter(c => (c.name+c.address).includes(keyword));
-  if (recs.length) {
-    target.innerHTML = recs.map((c, i) => renderOpt(key, c, i, 'recfall')).join('');
-    window['_hd_srch_' + key] = recs;
+  if (!usedApi) renderFallbackHotelSearch(key, keyword, target);
+}
+
+// 降级搜索：跨所有 HOTEL_CANDIDATES 候选做模糊匹配（去特殊字符 + 拆词）
+function normalize(s) {
+  return (s || '').toLowerCase().replace(/[\s·`\-_　、，。.!！？?]/g, '');
+}
+function fuzzyMatch(text, keyword) {
+  const t = normalize(text);
+  const k = normalize(keyword);
+  if (!k) return false;
+  if (t.includes(k)) return true;
+  // 拆词匹配（关键词每个字都出现）
+  let i = 0, j = 0;
+  while (i < t.length && j < k.length) {
+    if (t[i] === k[j]) j++;
+    i++;
+  }
+  return j === k.length;
+}
+function renderFallbackHotelSearch(key, keyword, target) {
+  // 跨所有 key 收集候选
+  const all = [];
+  for (const k of Object.keys(HOTEL_CANDIDATES)) {
+    const arr = HOTEL_CANDIDATES[k] || [];
+    for (const c of arr) {
+      if (fuzzyMatch(c.name + c.address, keyword)) all.push(c);
+    }
+  }
+  // 去重（同 name+lat+lng）
+  const seen = new Set();
+  const uniq = all.filter(c => { const k = c.name+'|'+c.lat+'|'+c.lng; if (seen.has(k)) return false; seen.add(k); return true; });
+  if (uniq.length) {
+    target.innerHTML = uniq.map((c, i) => renderOpt(key, c, i, 'srch')).join('');
+    window['_hd_srch_' + key] = uniq;
   } else {
     target.innerHTML = '<div class="hd-empty">未找到匹配项。请在<a href="https://map.qq.com/?type=hotel&q=' + encodeURIComponent(keyword) + '" target="_blank">腾讯地图搜索</a>后选点</div>';
     window['_hd_srch_' + key] = [];
@@ -873,7 +903,7 @@ function getRecommend(hk) {
   let list = HOTEL_CANDIDATES[hk.key];
   if (list) return list;
   // 沿用
-  const inheritMap = { 'd2_start':'d1_end', 'd3_start':'d2_end', 'd4_start':'d3_end', 'd5_start':'d4_end' };
+  const inheritMap = { 'd2_start':'d1_end', 'd2_end':'d1_start', 'd3_start':'d2_end', 'd4_start':'d3_end', 'd5_start':'d4_end' };
   const prevKey = inheritMap[hk.key];
   if (prevKey && HOTEL_CANDIDATES[prevKey]) return HOTEL_CANDIDATES[prevKey];
   return [];
