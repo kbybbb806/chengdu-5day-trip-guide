@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>成都·九寨·黄龙·四姑娘·峨眉 5日特种兵徒步摄影环线</title>
+<title>成都·九寨·黄龙·三星堆·四姑娘·峨眉 5日特种兵徒步摄影环线</title>
 <style>
 :root {
   --ink: #1a1f36; --paper: #fafbfc; --cream: #f5f3f0;
@@ -13,6 +13,7 @@
   --shadow: 0 2px 12px rgba(0,0,0,.06);
   --cat-sight: #6366f1; --cat-food: #f59e0b; --cat-culture: #10b981;
   --cat-shop: #ec4899; --cat-night: #8b5cf6;
+  --cat-transport: #475569; --cat-hotel: #0f766e;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--paper); color:var(--ink); line-height:1.65; }
@@ -20,8 +21,8 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 .hero { background:linear-gradient(160deg,#7e1214 0%,#b52830 40%,#d4483a 100%); color:#fff; padding:52px 20px 44px; text-align:center; position:relative; overflow:hidden; }
 .hero::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 20%, rgba(255,255,255,.08) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(0,0,0,.15) 0%, transparent 45%); pointer-events:none; }
 .hero-tag { display:inline-block; font-size:12px; letter-spacing:3px; border:1px solid rgba(255,255,255,.5); border-radius:20px; padding:4px 14px; margin-bottom:14px; }
-.hero h1 { font-size:clamp(24px,4.5vw,40px); font-weight:800; margin-bottom:10px; letter-spacing:1px; }
-.hero-sub { font-size:14px; opacity:.92; max-width:640px; margin:0 auto 18px; }
+.hero h1 { font-size:clamp(22px,4.2vw,38px); font-weight:800; margin-bottom:10px; letter-spacing:1px; }
+.hero-sub { font-size:14px; opacity:.92; max-width:680px; margin:0 auto 18px; }
 .hero-meta { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
 .hero-meta span { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:5px 14px; border-radius:20px; font-size:13px; }
 /* ===== Section ===== */
@@ -31,16 +32,16 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 /* ===== 概览 ===== */
 .ov-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:18px; }
 .ov-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; text-align:center; box-shadow:var(--shadow); }
-.ov-card .num { font-size:26px; font-weight:800; color:var(--accent); }
+.ov-card .num { font-size:24px; font-weight:800; color:var(--accent); }
 .ov-card .lbl { font-size:12px; color:var(--muted); margin-top:4px; }
 .route-flow { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:20px; box-shadow:var(--shadow); font-size:14px; }
-.route-flow .rf-item { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px dashed var(--border); }
+.route-flow .rf-item { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px dashed var(--border); flex-wrap:wrap; }
 .route-flow .rf-item:last-child { border-bottom:none; }
 .rf-icon { width:26px; height:26px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px; color:#fff; }
 .rf-1 { background:var(--cat-sight); } .rf-2 { background:var(--cat-culture); } .rf-3 { background:var(--cat-food); }
 .rf-way { color:var(--muted); font-size:12px; white-space:nowrap; }
 /* ===== 天气 ===== */
-.wx-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+.wx-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; }
 .wx-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
 .wx-card .place { font-weight:700; margin-bottom:6px; }
 .wx-card .temp { font-size:20px; font-weight:800; color:var(--blue); }
@@ -56,7 +57,7 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 .map-legend { position:absolute; top:10px; right:10px; z-index:2; background:rgba(255,255,255,.92); border-radius:10px; padding:8px 10px; font-size:11px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:flex; flex-direction:column; gap:4px; }
 .map-legend .lg-item { display:flex; align-items:center; gap:6px; }
 .lg-dot { width:10px; height:10px; border-radius:50%; }
-.lg-sight{background:var(--cat-sight);} .lg-food{background:var(--cat-food);} .lg-culture{background:var(--cat-culture);} .lg-shop{background:var(--cat-shop);} .lg-night{background:var(--cat-night);}
+.lg-sight{background:var(--cat-sight);} .lg-food{background:var(--cat-food);} .lg-culture{background:var(--cat-culture);} .lg-shop{background:var(--cat-shop);} .lg-night{background:var(--cat-night);} .lg-transport{background:var(--cat-transport);} .lg-hotel{background:var(--cat-hotel);}
 .map-note { padding:8px 14px; font-size:12px; color:var(--muted); background:#faf8f6; border-top:1px solid var(--border); }
 /* ===== 每日行程 ===== */
 .day-block { background:var(--card-bg); border:1px solid var(--border); border-radius:16px; padding:22px 18px; margin-bottom:18px; box-shadow:var(--shadow); }
@@ -72,21 +73,40 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 .tl-content.hl { border-color:var(--accent2); box-shadow:0 0 0 2px rgba(99,91,255,.25); }
 .tl-place { font-weight:700; font-size:15px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .tl-seq { width:20px; height:20px; border-radius:50%; color:#fff; font-size:11px; display:inline-flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
-.seq-sight{background:var(--cat-sight);} .seq-food{background:var(--cat-food);} .seq-culture{background:var(--cat-culture);} .seq-shop{background:var(--cat-shop);} .seq-night{background:var(--cat-night);}
+.seq-sight{background:var(--cat-sight);} .seq-food{background:var(--cat-food);} .seq-culture{background:var(--cat-culture);} .seq-shop{background:var(--cat-shop);} .seq-night{background:var(--cat-night);} .seq-transport{background:var(--cat-transport);} .seq-hotel{background:var(--cat-hotel);}
 .tl-desc { font-size:13px; color:#3d4557; margin-top:5px; }
 .tl-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
 .tag { font-size:11px; padding:2px 9px; border-radius:10px; font-weight:600; }
-.tag-sight{background:#eef2ff;color:#4338ca;} .tag-food{background:#fffbeb;color:#b45309;} .tag-culture{background:#ecfdf5;color:#047857;} .tag-shop{background:#fdf2f8;color:#be185d;} .tag-night{background:#f5f3ff;color:#6d28d9;}
+.tag-sight{background:#eef2ff;color:#4338ca;} .tag-food{background:#fffbeb;color:#b45309;} .tag-culture{background:#ecfdf5;color:#047857;} .tag-shop{background:#fdf2f8;color:#be185d;} .tag-night{background:#f5f3ff;color:#6d28d9;} .tag-transport{background:#f1f5f9;color:#334155;} .tag-hotel{background:#f0fdfa;color:#0f766e;}
 .tag-tip{background:#fff7ed;color:#c2410c;} .tag-cost{background:#eff6ff;color:#1d4ed8;}
+/* 交通卡 */
+.transport-card { cursor:pointer; }
+.transport-line { display:flex; align-items:center; gap:8px; font-size:13px; margin-top:6px; color:#1e3a8a; font-weight:600; flex-wrap:wrap; }
+.transport-line .tno { background:#1e3a8a; color:#fff; border-radius:6px; padding:1px 8px; font-size:12px; }
+.transport-line .ttime { background:#e0e7ff; border-radius:6px; padding:1px 8px; }
+.transport-line .tprice { background:#fff7ed; color:#c2410c; border-radius:6px; padding:1px 8px; }
+/* 酒店卡 */
+.hotel-card { cursor:pointer; border-left:4px solid var(--cat-hotel); }
+.hotel-input { border:1px dashed #94a3b8; border-radius:8px; padding:4px 10px; font-size:14px; font-weight:700; width:220px; max-width:70%; background:#fff; color:var(--ink); }
+.hotel-input:focus { outline:2px solid var(--cat-hotel); border-color:var(--cat-hotel); }
+.hotel-meta { font-size:12px; color:var(--muted); margin-top:4px; }
+/* 当日tips */
+.day-tips { margin-top:14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; }
+.day-tips .dt-title { font-size:14px; font-weight:800; color:#0f172a; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.day-tips ul { list-style:none; }
+.day-tips li { font-size:13px; color:#334155; padding:4px 0 4px 18px; position:relative; }
+.day-tips li::before { content:"▸"; position:absolute; left:2px; color:var(--accent); }
+.day-tips li b { color:#0f172a; }
 .day-alert { margin-top:12px; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:10px 14px; font-size:13px; color:#92400e; }
 .day-alert b { color:#b45309; }
 /* ===== 住宿 ===== */
 .hotel-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
-.hotel-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
-.hotel-card .h-name { font-weight:700; font-size:15px; }
-.hotel-card .h-tag { display:inline-block; font-size:11px; background:#fff1f2; color:#be123c; padding:2px 8px; border-radius:8px; margin:6px 0; }
-.hotel-card .h-price { font-size:14px; font-weight:700; color:var(--green); }
-.hotel-card .h-desc { font-size:12px; color:var(--muted); margin-top:6px; }
+.hotel-card2 { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
+.hotel-card2 .h-name { font-weight:700; font-size:15px; }
+.hotel-card2 .h-tag { display:inline-block; font-size:11px; background:#fff1f2; color:#be123c; padding:2px 8px; border-radius:8px; margin:6px 0; }
+.hotel-card2 .h-price { font-size:14px; font-weight:700; color:var(--green); margin:4px 0; }
+.hotel-card2 .h-price2 { font-size:12px; color:var(--muted); }
+.hotel-card2 .h-desc { font-size:12px; color:var(--muted); margin-top:6px; }
 /* ===== 预算 ===== */
 .budget-table { width:100%; border-collapse:collapse; background:var(--card-bg); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); font-size:14px; }
 .budget-table th { background:#f8f6f4; padding:10px 12px; text-align:left; font-size:13px; }
@@ -94,7 +114,7 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 .budget-table tr.total td { background:#fff7ed; font-weight:800; font-size:15px; }
 .budget-table .amt { text-align:right; font-weight:700; color:var(--accent); white-space:nowrap; }
 /* ===== 贴士 ===== */
-.tips-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.tips-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; }
 .tip-card { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:var(--shadow); }
 .tip-card .t-title { font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
 .tip-card ul { list-style:none; }
@@ -106,6 +126,10 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
   .map-container { height:300px; }
   .tl-time { width:52px; }
   .map-legend { font-size:10px; padding:6px 8px; }
+  .tips-grid { grid-template-columns:1fr; }
+  .hotel-grid { grid-template-columns:1fr; }
+  .wx-grid { grid-template-columns:1fr; }
+  .hotel-input { width:100%; }
 }
 </style>
 </head>
@@ -114,13 +138,13 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 <!-- 1. HERO -->
 <div class="hero">
   <div class="hero-tag">NATURE · TREK · PHOTO · CULTURE</div>
-  <h1>成都·九寨·黄龙·四姑娘·峨眉<br>5日特种兵徒步摄影环线</h1>
-  <div class="hero-sub">1人 · 长沙出发 · 8.21(周五)下班飞成都 → 8.26(周三)夜返长沙 · 高铁+拼车+直通车全程公共交通，五天扫遍川西两大世界遗产+三星堆+双桥沟+峨眉金顶，为徒步与拍照而生</div>
+  <h1>成都·九寨·黄龙·三星堆·四姑娘·峨眉<br>5日特种兵徒步摄影环线</h1>
+  <div class="hero-sub">1人 · 长沙出发 · 8.21(周五)下班飞成都 → 8.26(周三)夜返长沙 · 高铁+拼车全程公共交通，九寨→黄龙→三星堆一线串联、峨眉山住雷洞坪看日出，为徒步与拍照而生</div>
   <div class="hero-meta">
-    <span>5天6晚 · 5大景区</span>
+    <span>5天6晚 · 6大目的地</span>
     <span>预算约 ¥5,400</span>
     <span>长沙出发</span>
-    <span>高铁×4程 + 拼车×3程</span>
+    <span>高铁×6程 + 拼车×2程</span>
   </div>
 </div>
 
@@ -128,19 +152,19 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 <div class="section">
   <div class="section-title">行程概览</div>
   <div class="ov-grid">
-    <div class="ov-card"><div class="num">5</div><div class="lbl">大景区全扫</div></div>
-    <div class="ov-card"><div class="num">≈40km</div><div class="lbl">景区内徒步</div></div>
+    <div class="ov-card"><div class="num">6</div><div class="lbl">目的地全扫</div></div>
+    <div class="ov-card"><div class="num">≈45km</div><div class="lbl">景区内徒步</div></div>
     <div class="ov-card"><div class="num">¥5,400</div><div class="lbl">总预算(1人)</div></div>
-    <div class="ov-card"><div class="num">2900m+</div><div class="lbl">最高海拔金顶</div></div>
-    <div class="ov-card"><div class="num">21:30后</div><div class="lbl">返程选双流晚班机</div></div>
+    <div class="ov-card"><div class="num">3,077m</div><div class="lbl">峨眉金顶海拔</div></div>
+    <div class="ov-card"><div class="num">05:50</div><div class="lbl">D5看日出起床</div></div>
   </div>
   <div class="route-flow">
-    <div class="rf-item"><span class="rf-icon rf-1">✈</span><b>D0 8/21 周五晚</b><span>长沙黄花 → 成都双流，宿春熙路</span><span class="rf-way">航班约2h</span></div>
-    <div class="rf-item"><span class="rf-icon rf-2">🚄</span><b>D1 8/22 周六</b><span>成都东 → 黄龙九寨站(高铁) → 黄龙 → 九寨沟口</span><span class="rf-way">高铁1h45m+接驳3h</span></div>
-    <div class="rf-item"><span class="rf-icon rf-1">🏞</span><b>D2 8/23 周日</b><span>九寨沟全天徒步（日则沟→则查洼沟→树正沟）</span><span class="rf-way">景区内观光车+徒步</span></div>
-    <div class="rf-item"><span class="rf-icon rf-3">🏛</span><b>D3 8/24 周一</b><span>九寨沟口 → 高铁回成都 → 三星堆博物馆 → 成都夜火锅</span><span class="rf-way">高铁2h+城际40m</span></div>
-    <div class="rf-item"><span class="rf-icon rf-2">🏔</span><b>D4 8/25 周二</b><span>成都 → 四姑娘山双桥沟（1日特种兵）→ 夜返成都</span><span class="rf-way">拼车往返约10h</span></div>
-    <div class="rf-item"><span class="rf-icon rf-1">⛰</span><b>D5 8/26 周三</b><span>成都 → 峨眉山金顶 → 返成都 → 双流机场 ✈ 长沙</span><span class="rf-way">动车1h+景区3h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-1">✈</span><b>D0 8/21 周五晚</b><span>长沙黄花 → 成都，宿成都东站旁（方便早班高铁）</span><span class="rf-way">航班约2h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-2">🚄</span><b>D1 8/22 周六</b><span>C5746高铁→黄龙九寨站 → 九寨沟全天 → 16:30出沟 → 宿川主寺</span><span class="rf-way">高铁1h39m+接驳2h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-1">🏞</span><b>D2 8/23 周日</b><span>一早黄龙(8:00-12:30) → 高铁直达三星堆站 → 三星堆(16:30-19:30) → 晚回成都</span><span class="rf-way">省一整天！</span></div>
+    <div class="rf-item"><span class="rf-icon rf-3">🏔</span><b>D3 8/24 周一</b><span>成都 → 四姑娘山<b>长坪沟</b>徒步(1日特种兵) → 夜返成都</span><span class="rf-way">拼车往返约11h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-2">⛰</span><b>D4 8/25 周二</b><span>成都 → 峨眉山 → 下午金顶云海 → 宿<b>雷洞坪</b></span><span class="rf-way">动车1h+观光车2h</span></div>
+    <div class="rf-item"><span class="rf-icon rf-1">🌅</span><b>D5 8/26 周三</b><span>05:50起床 → 金顶看日出 → 下山回成都 → 双流机场 ✈ 长沙</span><span class="rf-way">日出约06:15</span></div>
   </div>
 </div>
 
@@ -151,8 +175,8 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
     <div class="wx-card"><div class="place">成都</div><div class="temp">22~31℃</div><div class="desc">阵雨为主 · 短袖+雨具</div></div>
     <div class="wx-card"><div class="place">九寨沟</div><div class="temp">13~30℃</div><div class="desc">多云间晴偶阵雨 · 温差12℃+ · 紫外线强</div></div>
     <div class="wx-card"><div class="place">黄龙</div><div class="temp">8~20℃</div><div class="desc">海拔3900m · 防风外套 · 防高反</div></div>
-    <div class="wx-card"><div class="place">四姑娘山</div><div class="temp">18~27℃</div><div class="desc">多云 · 双桥沟沟内偏凉</div></div>
-    <div class="wx-card"><div class="place">峨眉山金顶</div><div class="temp">12~18℃</div><div class="desc">山顶薄羽绒/冲锋衣 · 雨衣比伞实用 · 云海概率高</div></div>
+    <div class="wx-card"><div class="place">四姑娘山·长坪沟</div><div class="temp">15~24℃</div><div class="desc">多云 · 沟内森林徒步微凉</div></div>
+    <div class="wx-card"><div class="place">峨眉山金顶</div><div class="temp">8~15℃</div><div class="desc">日出前最冷 · 薄羽绒必备 · 云海概率高</div></div>
   </div>
 </div>
 
@@ -160,11 +184,11 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 <div class="map-section">
   <div class="map-card">
     <div class="map-tabs" id="mapTabs">
-      <button class="map-tab active" onclick="switchMapDay(0)">DAY1 黄龙</button>
-      <button class="map-tab" onclick="switchMapDay(1)">DAY2 九寨沟</button>
-      <button class="map-tab" onclick="switchMapDay(2)">DAY3 三星堆</button>
-      <button class="map-tab" onclick="switchMapDay(3)">DAY4 四姑娘</button>
-      <button class="map-tab" onclick="switchMapDay(4)">DAY5 峨眉山</button>
+      <button class="map-tab active" onclick="switchMapDay(0)">DAY1 九寨</button>
+      <button class="map-tab" onclick="switchMapDay(1)">DAY2 黄龙三星堆</button>
+      <button class="map-tab" onclick="switchMapDay(2)">DAY3 四姑娘</button>
+      <button class="map-tab" onclick="switchMapDay(3)">DAY4 峨眉山</button>
+      <button class="map-tab" onclick="switchMapDay(4)">DAY5 金顶日出</button>
     </div>
     <div class="map-body">
       <div id="map-container" class="map-container">
@@ -172,36 +196,52 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
           <div class="lg-item"><span class="lg-dot lg-sight"></span>景点</div>
           <div class="lg-item"><span class="lg-dot lg-food"></span>美食</div>
           <div class="lg-item"><span class="lg-dot lg-culture"></span>文化</div>
-          <div class="lg-item"><span class="lg-dot lg-shop"></span>购物</div>
-          <div class="lg-item"><span class="lg-dot lg-night"></span>夜生活</div>
+          <div class="lg-item"><span class="lg-dot lg-transport"></span>交通</div>
+          <div class="lg-item"><span class="lg-dot lg-hotel"></span>酒店</div>
         </div>
       </div>
     </div>
-    <div class="map-note">💡 点击地图标记或下方行程卡片 → 地图飞行定位并弹出信息窗；点击 DAY Tab 切换当日路线。</div>
+    <div class="map-note">💡 点击地图标记或行程卡片 → 地图飞行定位+信息窗；酒店标记为推荐位置，可在行程卡中编辑酒店名；点击 DAY Tab 切换当日路线。</div>
   </div>
 </div>
 
 <!-- 5. 每日行程 -->
 <div class="section" id="itinerary-section">
-  <div class="section-title">每日行程（特种兵时间轴）</div>
+  <div class="section-title">每日行程（时间轴 · 酒店可编辑）</div>
   <div id="itinerary-content"></div>
 </div>
 
 <!-- 6. 住宿推荐 -->
 <div class="section">
-  <div class="section-title">住宿推荐</div>
+  <div class="section-title">住宿推荐（1人大床 / 2人双床）</div>
   <div class="hotel-grid">
-    <div class="hotel-card">
-      <div class="h-name">成都 · 春熙路/天府广场经济连锁</div>
-      <span class="h-tag">D0/D3/D4 共3晚</span>
-      <div class="h-price">约 ¥150-220/晚</div>
-      <div class="h-desc">推荐住春熙路地铁口：地铁2号线直达成都东站，吃火锅宵夜方便。青旅床位¥60-90更省。总预算约¥500-600。</div>
+    <div class="hotel-card2">
+      <div class="h-name">成都东站旁经济连锁（如家/汉庭/全季）</div>
+      <span class="h-tag">D0 / D2 共2晚</span>
+      <div class="h-price">大床房 ¥150-200/晚</div>
+      <div class="h-price2">双床房 ¥170-220/晚</div>
+      <div class="h-desc">步行10分钟内到成都东站，D1赶06:14高铁、D2晚20:39到站即睡。地铁2号线去春熙路吃火锅方便。合计约¥300-400。</div>
     </div>
-    <div class="hotel-card">
-      <div class="h-name">九寨沟口 · 漳扎镇藏式客栈</div>
-      <span class="h-tag">D1/D2 共2晚</span>
-      <div class="h-price">约 ¥120-200/晚</div>
-      <div class="h-desc">选沟口步行10分钟内客栈，D2一早7:00进沟不排队。藏式木屋+地暖，旺季务必提前2周订。总预算约¥300-400。</div>
+    <div class="hotel-card2">
+      <div class="h-name">川主寺镇藏式客栈</div>
+      <span class="h-tag">D1 共1晚</span>
+      <div class="h-price">大床房 ¥120-180/晚</div>
+      <div class="h-price2">双床房 ¥140-200/晚</div>
+      <div class="h-desc">距黄龙景区40分钟车程、距黄龙九寨站10分钟，为D2一早去黄龙铺路。藏式木屋+地暖，旺季提前订。约¥120-180。</div>
+    </div>
+    <div class="hotel-card2">
+      <div class="h-name">成都市区酒店（成都东/春熙路）</div>
+      <span class="h-tag">D3 共1晚</span>
+      <div class="h-price">大床房 ¥150-220/晚</div>
+      <div class="h-price2">双床房 ¥170-240/晚</div>
+      <div class="h-desc">D3夜返成都，住地铁2号线沿线（春熙路或成都东），方便D4去成都南/东站坐动车。约¥150-220。</div>
+    </div>
+    <div class="hotel-card2">
+      <div class="h-name">峨眉山雷洞坪酒店（峨眉山雷洞坪山庄等）</div>
+      <span class="h-tag">D4 共1晚</span>
+      <div class="h-price">标间 ¥200-350/晚</div>
+      <div class="h-price2">双床房 ¥220-380/晚</div>
+      <div class="h-desc">海拔2430m，距金顶索道站步行1.5km。看日出性价比首选：05:50起床→06:00索道→赶上06:15日出。约¥200-350。</div>
     </div>
   </div>
 </div>
@@ -212,74 +252,56 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
   <table class="budget-table">
     <tr><th>项目</th><th>明细</th><th class="amt">金额</th></tr>
     <tr><td>✈ 机票</td><td>长沙⇄成都往返（提前订，8月底回落）</td><td class="amt">¥1,400</td></tr>
-    <tr><td>🚄 高铁</td><td>成都东⇄黄龙九寨 ¥143×2；成都⇄三星堆 ¥60×2；成都⇄峨眉山 ¥65×2</td><td class="amt">¥536</td></tr>
-    <tr><td>🚐 接驳</td><td>黄龙九寨站→黄龙¥50 + 黄龙→九寨沟口¥60 + 沟口→车站¥60 + 峨眉山站打车¥60</td><td class="amt">¥230</td></tr>
+    <tr><td>🚄 高铁</td><td>成都东⇄黄龙九寨 ¥130×2｜黄龙九寨→三星堆站 ¥143｜三星堆站→成都东 ¥40｜成都⇄峨眉山 ¥65×2</td><td class="amt">¥573</td></tr>
+    <tr><td>🚐 接驳</td><td>黄龙九寨站→九寨沟口¥50｜沟口→川主寺¥60｜川主寺⇄黄龙¥80｜黄龙→站¥40｜三星堆站⇄博物馆¥40｜峨眉山站往返¥60</td><td class="amt">¥330</td></tr>
     <tr><td>🚗 拼车</td><td>成都⇄四姑娘山往返（1人拼车）</td><td class="amt">¥280</td></tr>
-    <tr><td>🎫 门票</td><td>九寨沟¥190+观光车¥90｜黄龙¥170+索道上¥80｜三星堆¥72｜双桥沟¥80+观光车¥70｜峨眉山¥160+观光车¥90+金顶索道¥120</td><td class="amt">¥1,122</td></tr>
-    <tr><td>🏨 住宿</td><td>成都3晚×¥200 + 九寨沟口2晚×¥180</td><td class="amt">¥960</td></tr>
-    <tr><td>🍜 餐饮</td><td>6天×¥120（高原景区物价较高）</td><td class="amt">¥720</td></tr>
+    <tr><td>🎫 门票</td><td>九寨沟¥190+观光车¥90｜黄龙¥170+索道上¥80｜三星堆¥72｜长坪沟¥70+观光车¥20｜峨眉山¥160+观光车¥90+金顶索道¥120</td><td class="amt">¥1,062</td></tr>
+    <tr><td>🏨 住宿</td><td>成都东2晚×¥180 + 川主寺¥160 + 成都1晚¥180 + 雷洞坪¥250</td><td class="amt">¥950</td></tr>
+    <tr><td>🍜 餐饮</td><td>6天×¥110（高原景区物价较高）</td><td class="amt">¥660</td></tr>
     <tr><td>🎒 杂项</td><td>氧气瓶/雨衣/防晒/零食</td><td class="amt">¥150</td></tr>
-    <tr class="total"><td>合计</td><td>弹性区间（机票浮动±300，索道可选徒步省¥80）</td><td class="amt">≈¥5,400</td></tr>
+    <tr class="total"><td>合计</td><td>弹性区间（机票浮动±300；黄龙徒步下山省索道下行¥40）</td><td class="amt">≈¥5,400</td></tr>
   </table>
 </div>
 
-<!-- 8. 实用贴士 -->
+<!-- 8. 通用贴士 -->
 <div class="section">
-  <div class="section-title">实用贴士</div>
+  <div class="section-title">通用实用贴士</div>
   <div class="tips-grid">
     <div class="tip-card">
       <div class="t-title">🎫 预约与限流（必看）</div>
       <ul>
-        <li>九寨沟旺季限流：提前7天在"阿坝旅游网"/官方小程序抢票（¥190+观光车¥90）</li>
-        <li>三星堆提前3天预约¥72；暑假延时至20:00闭馆、18:00停止入园</li>
-        <li>峨眉山可当天购票；金顶索道17:30前下行</li>
-        <li>双桥沟观光车最晚约16:30出沟，控制游玩时间</li>
+        <li>九寨沟限流：提前7天"阿坝旅游网"/官方小程序抢票（¥190+观光车¥90）</li>
+        <li>三星堆提前3天预约¥72；暑假18:00停止入园、20:00闭馆</li>
+        <li>峨眉山可当天购票；金顶索道夏季首班约06:00</li>
+        <li>黄龙索道上行¥80/下行¥40，可徒步下山省钱</li>
       </ul>
     </div>
     <div class="tip-card">
       <div class="t-title">🏔 高反与防护</div>
       <ul>
-        <li>黄龙最高3900m、九寨长海3100m：出发前1周可服红景天，缓步走</li>
-        <li>黄龙九寨站海拔2977m，出站放慢动作，备便携氧气瓶¥15-25</li>
-        <li>高原紫外线强：防晒霜+墨镜+遮阳帽（拍照也保护镜头）</li>
-        <li>早晚温差15℃+：洋葱式穿衣，白天短袖+防晒衣，早晚抓绒</li>
+        <li>黄龙3900m、九寨长海3100m：缓步走，备便携氧气瓶¥15-25</li>
+        <li>黄龙九寨站海拔2977m，出站放慢动作</li>
+        <li>高原紫外线强：防晒霜+墨镜+遮阳帽</li>
+        <li>洋葱式穿衣：白天短袖+防晒衣，早晚抓绒，金顶薄羽绒</li>
       </ul>
     </div>
     <div class="tip-card">
       <div class="t-title">📷 摄影机位（摄影师向）</div>
       <ul>
-        <li>九寨五花海：上午10点前顺光，湖水蓝绿分层最艳</li>
-        <li>珍珠滩瀑布：广角+慢门，ND镜拍丝绸水流</li>
-        <li>黄龙五彩池：上午光线好钙华池色彩饱和；金沙铺地长焦压缩</li>
-        <li>双桥沟布达拉峰：下午顺光雪山；四姑娜措拍倒影</li>
-        <li>金顶十方普贤：云海+金殿对称构图；三星堆馆内高ISO禁闪光</li>
+        <li>九寨五花海：上午顺光，湖水蓝绿分层</li>
+        <li>珍珠滩瀑布：广角+慢门ND镜</li>
+        <li>黄龙五彩池：上午光线最好</li>
+        <li>长坪沟：枯树滩拍枯木雪山，木骡子近观幺妹峰</li>
+        <li>金顶日出：十方普贤东侧机位，云海+金像剪影</li>
       </ul>
     </div>
     <div class="tip-card">
       <div class="t-title">🚄 交通细节</div>
       <ul>
-        <li>高铁票12306提前抢（旺季去九寨的车票紧俏，往返都要提前3-5天）</li>
-        <li>黄龙九寨站接驳：微信小程序"九旅悦行"订景区直通车，与高铁时刻衔接</li>
-        <li>四姑娘山拼车：成都集合点/茶店子，约¥130-160/人单程，可请客栈代订</li>
-        <li>返程航班务必选成都双流机场21:30后班次（天府机场离市区1h+太远）</li>
-      </ul>
-    </div>
-    <div class="tip-card">
-      <div class="t-title">🍜 吃在川西</div>
-      <ul>
-        <li>成都：火锅（蜀大侠/大龙燚）、串串（钢管厂五区）、龙抄手、钟水饺</li>
-        <li>九寨沟口：牦牛肉火锅、青稞饼、酥油茶、藏式酸奶</li>
-        <li>四姑娘山镇：牦牛汤锅、藏家柴火鸡（午餐解决）</li>
-        <li>峨眉山脚下：峨眉豆腐脑、叶儿粑、乐山钵钵鸡</li>
-      </ul>
-    </div>
-    <div class="tip-card">
-      <div class="t-title">⚠️ 特种兵风险提示</div>
-      <ul>
-        <li>本行程每天早出晚归（D1/D4/D5都是6:00-6:30起床），体力消耗大</li>
-        <li>如遇高反/天气不佳：D4四姑娘山为"弹性项"，可临时放弃改为成都休整</li>
-        <li>峨眉山金顶遇大雾看不到云海属正常，调整心态</li>
-        <li>雨衣比雨伞管用（峡谷横风），相机带防水袋</li>
+        <li>去九寨的高铁票紧俏，全程提前3-5天12306抢票</li>
+        <li>黄龙九寨站接驳："九旅悦行"小程序订景区直通车</li>
+        <li>黄龙九寨→三星堆站可直达购票（停靠三星堆站的车次）</li>
+        <li>返程航班选双流机场21:30后班次（天府机场太远）</li>
       </ul>
     </div>
   </div>
@@ -287,73 +309,192 @@ body { font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Ya
 
 <div class="footer">
   数据来源：铁路12306/同程时刻表 · 中国天气网 · 各景区官方 · 腾讯位置服务<br>
-  生成时间：2026-08-20 · 旅行攻略生成V2 · 价格以出行当日为准
+  生成时间：2026-08-20 · 旅行攻略生成V2 · 价格以出行当日为准 · 酒店名为占位，可在行程卡中自行填写
 </div>
 
 <script>
 /* ========== 数据 ========== */
-const CAT = { sight:'sight', food:'food', culture:'culture', shop:'shop', night:'night' };
-const CAT_CN = { sight:'景点', food:'美食', culture:'文化', shop:'购物', night:'夜生活' };
+const CAT = { sight:'sight', food:'food', culture:'culture', shop:'shop', night:'night', transport:'transport', hotel:'hotel' };
+const CAT_CN = { sight:'景点', food:'美食', culture:'文化', shop:'购物', night:'夜生活', transport:'交通', hotel:'酒店' };
+const HOTEL_KEY = 'guide_hotel_';
+function getHotel(key, def) { try { return localStorage.getItem(HOTEL_KEY + key) || def; } catch(e){ return def; } }
+function setHotel(key, val) { try { localStorage.setItem(HOTEL_KEY + key, val); } catch(e){} }
+
 const dayData = [
   {
-    name:'DAY 1 · 高铁进山·黄龙瑶池', date:'8/22 周六', center:[32.74,103.83],
+    name:'DAY 1 · 高铁进山·九寨沟全天', date:'8/22 周六', center:[33.15,103.92],
+    hotelStart: { key:'d1_start', name:'成都东站旁酒店（D0入住）', lat:30.6320, lng:104.1400, note:'D0晚入住 · 步行10分钟到成都东站，赶06:14早班高铁' },
+    hotelEnd:   { key:'d1_end', name:'川主寺镇酒店', lat:32.7850, lng:103.6520, note:'宿川主寺 · 距黄龙40min、距黄龙九寨站10min，为D2一早去黄龙铺路' },
     pois:[
-      { cat:'sight', name:'成都东站', lat:30.6320, lng:104.1400, time:'06:30', cost:'高铁¥143', desc:'地铁2号线到成都东站，乘坐 C5782 次（06:45发），1小时45分钟直达黄龙九寨站，二等座¥143。', tip:'提前3-5天12306抢票，旺季早班车最抢手' },
-      { cat:'sight', name:'黄龙九寨站', lat:32.7850, lng:103.6520, time:'08:30', cost:'接驳¥50', desc:'海拔2977m高原站。出站换"九旅悦行"景区直通车或拼车（¥50-60）约1小时到黄龙景区。出站缓行防高反。', tip:'直通车按高铁时刻发车，小程序可订' },
-      { cat:'sight', name:'黄龙风景区', lat:32.7397, lng:103.8346, time:'10:00-15:00', cost:'门票¥170+索道¥80', desc:'世界自然遗产，钙华彩池之王。索道上山（10min）→五彩池→黄龙寺→金沙铺地→争艳池，徒步下山约4小时。海拔3100-3900m，是全程高反压力最大的点。', tip:'五彩池上午顺光最艳；缓步走备氧气瓶' },
-      { cat:'food', name:'黄龙景区简餐', lat:32.7380, lng:103.8330, time:'12:30', cost:'¥40', desc:'景区内餐厅或自带路餐。高海拔食欲差，备巧克力/能量棒。', tip:'热水供应有限，保温杯必备' },
-      { cat:'sight', name:'九寨沟口·漳扎镇', lat:33.2800, lng:103.9000, time:'17:30', cost:'拼车¥60', desc:'黄龙游玩后拼车/直通车约2小时到九寨沟口漳扎镇，入住藏式客栈。晚上逛漳扎镇，吃牦牛肉火锅。', tip:'客栈选沟口步行10分钟内，明早7:00进沟' },
-      { cat:'food', name:'牦牛肉火锅（漳扎镇）', lat:33.2820, lng:103.9020, time:'19:00', cost:'¥90', desc:'藏式牦牛肉火锅+青稞饼+酥油茶，高原一天最治愈的一顿。', tip:'火锅店8-9点排队，早点去' }
+      { cat:'transport', name:'成都东 → 黄龙九寨站（高铁）', lat:30.6320, lng:104.1400, time:'06:14', price:'二等座¥130',
+        line:'C5746 · 06:14发 → 07:53到 · 1小时39分', alt:'备选 C5782 06:45→08:30 ¥143 / C5772 07:30→09:31 ¥143',
+        desc:'成都东站乘C5746次，川青铁路直达。出站海拔2977m，缓行防高反。' },
+      { cat:'transport', name:'黄龙九寨站 → 九寨沟沟口', lat:32.7850, lng:103.6520, time:'08:00', price:'直通车¥50',
+        line:'景区直通车/拼车 · 90km · 约1小时50分', alt:'"九旅悦行"小程序按高铁时刻发车',
+        desc:'出站口乘直通车，10:20前到沟口，直奔九寨沟景区大门。' },
+      { cat:'sight', name:'九寨沟景区', lat:33.2580, lng:103.9170, time:'10:30-16:30', price:'门票¥190+观光车¥90',
+        desc:'世界自然遗产，今日6小时走核心线路：观光车至诺日朗 → 日则沟（五花海、珍珠滩瀑布）→ 则查洼沟（长海、五彩池）→ 树正沟（诺日朗瀑布、树正群海）。观光车接驳+精华段徒步。',
+        tip:'上午顺光拍五花海；16:30前必须出沟' },
+      { cat:'sight', name:'五花海·珍珠滩瀑布', lat:33.1470, lng:103.9390, time:'11:30', price:'含门票',
+        desc:'九寨精华之最，湖水蓝绿分层；珍珠滩瀑布《西游记》取景地，广角+慢门。', tip:'10点前顺光最佳' },
+      { cat:'food', name:'诺日朗餐厅午餐', lat:33.1620, lng:103.9020, time:'12:30', price:'¥50',
+        desc:'沟内唯一大餐厅（自助¥60）或自带路餐，饭后看诺日朗瀑布（宽270m钙华瀑布）。' },
+      { cat:'sight', name:'长海·五彩池', lat:33.1060, lng:103.8850, time:'14:00', price:'含门票',
+        desc:'九寨海拔最高(3100m)最大海子，雪山环抱；五彩池步行800m，池水五色斑斓。', tip:'正午光线直射颜色最饱和' },
+      { cat:'sight', name:'树正群海·树正瀑布', lat:33.1850, lng:103.9180, time:'15:30', price:'含门票',
+        desc:'几十个海子层层叠叠+磨坊藏寨，收尾线路，16:30前出沟。', tip:'树正寨观景台拍全景' },
+      { cat:'transport', name:'九寨沟口 → 川主寺', lat:33.2800, lng:103.9000, time:'16:45', price:'拼车¥60',
+        line:'拼车 · 90km · 约1小时50分', alt:'可请客栈代订返程车',
+        desc:'16:30出沟后拼车前往川主寺镇（宿地），约18:40到达，晚餐牦牛肉火锅。' },
+      { cat:'food', name:'川主寺晚餐（牦牛肉火锅）', lat:32.7840, lng:103.6520, time:'19:00', price:'¥90',
+        desc:'藏式牦牛肉火锅+青稞饼+酥油茶。饭后早睡，D2要6:30起床。' }
+    ],
+    tips:[
+      '<b>抢票</b>：成都东→黄龙九寨早班车最抢手，提前5天12306购票；D2返程票同步买好',
+      '<b>九寨预约</b>：提前7天"阿坝旅游网"抢票，旺季每日限流，抢不到就凉了',
+      '<b>路线取舍</b>：6小时走不完三条沟，优先五花海+珍珠滩（日则沟）+长海五彩池（则查洼沟），树正沟快速车观',
+      '<b>观光车</b>：进沟先坐车到诺日朗/长海，由上往下走省体力；16:30末班车出沟',
+      '<b>住宿</b>：川主寺为D2黄龙铺路，别住回九寨沟口（绕路1.5h）'
     ]
   },
   {
-    name:'DAY 2 · 九寨沟全天徒步', date:'8/23 周日', center:[33.15,103.92],
+    name:'DAY 2 · 黄龙上午·三星堆下午·夜返成都', date:'8/23 周日', center:[31.00,104.10],
+    hotelStart: { key:'d2_start', name:'川主寺镇酒店（续住D1）', lat:32.7850, lng:103.6520, note:'D1已入住 · 06:30起床，07:00出发去黄龙' },
+    hotelEnd:   { key:'d2_end', name:'成都东站旁酒店', lat:30.6320, lng:104.1400, note:'20:45到成都东即睡，D3早6:00出发四姑娘山' },
     pois:[
-      { cat:'sight', name:'九寨沟景区大门', lat:33.2580, lng:103.9170, time:'07:00', cost:'门票¥190+观光车¥90', desc:'提前7天预约门票。7:00开门即进沟，观光车直达日则沟最深处原始森林，由上往下徒步，避开人群。', tip:'早进沟光线柔、人少，拍照黄金2小时' },
-      { cat:'sight', name:'五花海', lat:33.1470, lng:103.9390, time:'08:30', cost:'含门票', desc:'九寨沟精华之最，湖水蓝绿分层，枯木沉水清晰可见。沿栈道绕湖半圈找机位。', tip:'上午10点前顺光，湖面倒影最佳' },
-      { cat:'sight', name:'珍珠滩瀑布', lat:33.1350, lng:103.9300, time:'09:30', cost:'含门票', desc:'《西游记》片尾取景地，宽阔钙华滩+瀑布群，慢门拍水流绝佳。', tip:'广角+ND镜，栈道下方是经典机位' },
-      { cat:'food', name:'诺日朗餐厅', lat:33.1620, lng:103.9020, time:'12:00', cost:'¥50', desc:'沟内唯一大餐厅（自助餐¥60/人）或自带路餐。饭后看诺日朗瀑布。', tip:'旺季人巨多，错峰12:30后进' },
-      { cat:'sight', name:'诺日朗瀑布', lat:33.1630, lng:103.9010, time:'13:00', cost:'含门票', desc:'中国最宽钙华瀑布（宽270m），"Y"字形沟的三沟交汇处。', tip:'观景台全景+栈道近景两个机位' },
-      { cat:'sight', name:'长海', lat:33.1060, lng:103.8850, time:'14:00', cost:'含门票', desc:'九寨沟海拔最高(3100m)、最大海子，雪山环抱，水色墨蓝。', tip:'长海观景台大景深构图，雪山倒影' },
-      { cat:'sight', name:'五彩池', lat:33.1100, lng:103.8890, time:'14:40', cost:'含门票', desc:'九寨最小却最艳的海子，池水五色斑斓，从长海步行800m可达。', tip:'正午到下午光线直射时颜色最饱和' },
-      { cat:'sight', name:'树正群海', lat:33.1850, lng:103.9180, time:'15:30', cost:'含门票', desc:'几十个海子层层叠叠，树正瀑布+磨坊藏寨，最后一条沟的收尾。', tip:'树正寨观景台可以拍全景；17:00前出沟' }
+      { cat:'transport', name:'川主寺 → 黄龙景区', lat:32.7850, lng:103.6520, time:'07:00', price:'拼车¥40',
+        line:'拼车/包车 · 26km · 约40分钟', alt:'也可打车，早点出发避人流',
+        desc:'07:00出发，08:00前到黄龙游客中心。' },
+      { cat:'sight', name:'黄龙风景区', lat:32.7397, lng:103.8346, time:'08:00-12:30', price:'门票¥170+索道上¥80',
+        desc:'钙华彩池之王。索道上山（10min）→五彩池→黄龙寺→金沙铺地，徒步下山约3.5h。海拔3100-3900m，全程高反压力最大点，缓步走。',
+        tip:'五彩池上午顺光最艳；下行徒步省¥40索道费' },
+      { cat:'sight', name:'五彩池·金沙铺地', lat:32.7400, lng:103.8330, time:'08:40', price:'含门票',
+        desc:'黄龙最精华：层层叠叠钙华彩池如梯田；金沙铺地是3公里金色钙华坡面。', tip:'长焦压缩拍彩池阵列' },
+      { cat:'food', name:'黄龙景区简餐', lat:32.7380, lng:103.8330, time:'12:00', price:'¥40',
+        desc:'景区餐厅或自带路餐，高海拔食欲差备能量棒。12:30前出景区。' },
+      { cat:'transport', name:'黄龙 → 黄龙九寨站', lat:32.7397, lng:103.8346, time:'12:30', price:'拼车¥40',
+        line:'拼车 · 26km · 约40分钟', alt:'13:10前到站，安检进站',
+        desc:'12:30出黄龙，13:10到黄龙九寨站，赶14:14高铁。' },
+      { cat:'transport', name:'黄龙九寨 → 三星堆站（高铁直达！）', lat:32.7850, lng:103.6520, time:'14:14', price:'二等座¥143',
+        line:'C5754 · 14:14发 → 约16:06到三星堆站', alt:'备选 C5794 13:08发（黄龙需12:00前结束）｜购票选"黄龙九寨→三星堆"',
+        desc:'不用先回成都！川青铁路直达三星堆站（约2小时）。出站打车15-20分钟到三星堆博物馆。' },
+      { cat:'culture', name:'三星堆博物馆', lat:31.0014, lng:104.2183, time:'16:30-19:30', price:'门票¥72',
+        desc:'古蜀文明巅峰。新馆三大展区：世纪逐梦、巍然王都、天地人神。必看青铜大立人、青铜神树、黄金面具、纵目面具。暑假延时至20:00闭馆、18:00停止入园。',
+        tip:'提前3天预约；馆内禁闪光灯，高ISO' },
+      { cat:'culture', name:'三星堆文物修复馆', lat:31.0000, lng:104.2160, time:'17:30', price:'含门票',
+        desc:'隔着玻璃看文物修复师工作。延时开放时段人少，可细看青铜铸造工艺。' },
+      { cat:'transport', name:'三星堆站 → 成都东', lat:31.0014, lng:104.2183, time:'19:45', price:'二等座约¥40',
+        line:'C5798 · 20:13发 → 20:39到成都东', alt:'备选 21:00后车次，12306查询',
+        desc:'19:30出馆打车回三星堆站，20:13高铁26分钟回成都东。' },
+      { cat:'night', name:'成都东站晚餐·夜宵', lat:30.6320, lng:104.1400, time:'21:00', price:'¥60',
+        desc:'到站后周边宵夜（钵钵鸡/豆花），早点休息，D3又是特种兵日。' }
+    ],
+    tips:[
+      '<b>黄龙抢时间</b>：08:00第一波进景区，索道上+徒步下4.5小时足够；12:30必须出景区',
+      '<b>高反</b>：黄龙3900m是全程最高点，氧气瓶随身，五彩池段慢走多歇',
+      '<b>直达车次</b>：黄龙九寨→三星堆站有直达高铁（C5754/C5794等），12306直接买"黄龙九寨→三星堆"；若当天无票，买"→成都东"中途三星堆站下车不可取，需改终点',
+      '<b>三星堆预约</b>：提前3天小程序预约，暑假18:00停止入园，最晚17:00前到',
+      '<b>省一天的精髓</b>：这天的"黄龙+三星堆"串行，正是相比常规路线的最大优化'
     ]
   },
   {
-    name:'DAY 3 · 高铁返蓉·三星堆探秘', date:'8/24 周一', center:[30.90,104.05],
+    name:'DAY 3 · 四姑娘山长坪沟（1日特种兵）', date:'8/24 周一', center:[31.00,102.85],
+    hotelStart: { key:'d3_start', name:'成都东站旁酒店（续住D2）', lat:30.6320, lng:104.1400, note:'05:30起床，06:00拼车出发' },
+    hotelEnd:   { key:'d3_end', name:'成都市区酒店（春熙路/成都东）', lat:30.6570, lng:104.0810, note:'23:00夜返成都 · 地铁2号线沿线，方便D4坐动车' },
     pois:[
-      { cat:'sight', name:'九寨沟口出发', lat:33.2800, lng:103.9000, time:'08:00', cost:'拼车¥60', desc:'拼车/直通车2小时到黄龙九寨站，赶10:06发车的 C5792 次高铁（12:31到成都东）。', tip:'若错过可坐11:46的 C5752 次（13:43到）' },
-      { cat:'sight', name:'成都东站', lat:30.6320, lng:104.1400, time:'12:31', cost:'—', desc:'出站午餐（站内快餐或附近川菜）。随后乘城际列车往三星堆站（约40分钟）。', tip:'成都东→三星堆站班次密集，随到随走' },
-      { cat:'culture', name:'三星堆博物馆', lat:31.0014, lng:104.2183, time:'15:30-19:00', cost:'门票¥72', desc:'世界级古蜀文明遗址。新馆三大展区：世纪逐梦、巍然王都、天地人神。必看：青铜大立人、青铜神树、黄金面具、青铜纵目面具。暑假延时至20:00闭馆。', tip:'提前3天官网预约；馆内禁闪光灯，高ISO拍摄' },
-      { cat:'culture', name:'三星堆文物修复馆', lat:31.0000, lng:104.2160, time:'17:00', cost:'含门票', desc:'隔着玻璃看文物修复师工作，了解考古修复过程。', tip:'17:00后延时开放区域人少' },
-      { cat:'food', name:'成都火锅（春熙路）', lat:30.6570, lng:104.0810, time:'20:00', cost:'¥110', desc:'从三星堆站回成都东，地铁到春熙路。蜀大侠/大龙燚安排一顿资格火锅，犒劳前两天的辛苦。', tip:'鸳鸯锅底，微辣起步' },
-      { cat:'night', name:'太古里·九眼桥夜景', lat:30.6560, lng:104.0860, time:'21:30', cost:'¥30', desc:'饭后太古里/IFS打卡熊猫爬墙，或九眼桥酒吧街散步，为D4保存体力早点睡。', tip:'明早6:30出发四姑娘山，23:00前入睡' }
+      { cat:'transport', name:'成都 → 四姑娘山镇（拼车）', lat:30.6630, lng:104.0430, time:'06:00', price:'拼车¥130-160',
+        line:'拼车/包车 · 约4.5-5小时', alt:'客栈代订或川西拼车平台；备晕车药',
+        desc:'经都江堰-卧龙-巴朗山隧道，11:00前到四姑娘山镇，车上补觉。' },
+      { cat:'food', name:'四姑娘山镇午餐', lat:31.0023, lng:102.8509, time:'11:30', price:'¥60',
+        desc:'镇上牦牛汤锅/藏家菜吃饱，12:00进沟。' },
+      { cat:'sight', name:'长坪沟（徒步线）', lat:31.0050, lng:102.8500, time:'12:00-18:00', price:'门票¥70+观光车¥20',
+        desc:'四姑娘山三条沟中最具徒步感：观光车至喇嘛寺 → 栈道徒步（虫虫脚瀑布→枯树滩→两河口→木骡子）。往返约12-15km，按体力折返。',
+        tip:'木骡子可近观幺妹峰+草甸花海，是摄影终点' },
+      { cat:'sight', name:'喇嘛寺·虫虫脚瀑布', lat:31.0200, lng:102.8600, time:'12:30', price:'含门票',
+        desc:'观光车终点喇嘛寺（3600m），先看虫虫脚瀑布（1.2km栈道），再沿唐柏古道进森林。' },
+      { cat:'sight', name:'枯树滩', lat:31.0300, lng:102.8700, time:'13:30', price:'含门票',
+        desc:'大片枯木立于浅滩，雪山为背景，是长坪沟最出片机位。', tip:'中长焦拍枯木与雪山层次' },
+      { cat:'sight', name:'两河口·木骡子方向', lat:31.0500, lng:102.8800, time:'14:30', price:'含门票',
+        desc:'越往深处越原始。体力好者冲木骡子（约15km往返，需6h），体力一般走到两河口折返。15:30必须开始返程。', tip:'17:30前回到喇嘛寺乘末班观光车' },
+      { cat:'transport', name:'四姑娘山镇 → 成都（拼车）', lat:31.0023, lng:102.8509, time:'18:30', price:'拼车¥130-160',
+        line:'拼车 · 约4.5-5小时', alt:'提前与师傅约好返程；夜路山路注意安全',
+        desc:'18:00出沟，18:30拼车返成都，23:00到。若体力透支可临时放弃本日改双桥沟轻松版。' }
+    ],
+    tips:[
+      '<b>选长坪沟的原因</b>：双桥沟是观光车轻松线、海子沟是纯野线，长坪沟是"徒步感+雪山近观"平衡点，1天冲木骡子稍紧，走到两河口最稳',
+      '<b>装备</b>：徒步鞋+登山杖必带，海拔3600m+森林徒步，带水2L+能量棒；15:30准时返程否则赶不上末班观光车',
+      '<b>拍照</b>：枯树滩（中长焦）、木骡子（幺妹峰+草甸）为双核心机位，下午顺光',
+      '<b>高反预案</b>：长坪沟3600-3800m，如头晕立即折返，别硬冲木骡子',
+      '<b>夜路</b>：返程拼车走山路，系好安全带，备干粮，23:00到成都后直接睡'
     ]
   },
   {
-    name:'DAY 4 · 四姑娘山双桥沟（1日特种兵）', date:'8/25 周二', center:[31.00,102.85],
+    name:'DAY 4 · 峨眉山上金顶·宿雷洞坪', date:'8/25 周二', center:[29.55,103.38],
+    hotelStart: { key:'d4_start', name:'成都市区酒店（续住D3）', lat:30.6570, lng:104.0810, note:'06:30出发去火车站' },
+    hotelEnd:   { key:'d4_end', name:'雷洞坪酒店（峨眉山）', lat:29.5250, lng:103.3350, note:'宿雷洞坪2430m · 为D5金顶日出铺路' },
     pois:[
-      { cat:'sight', name:'成都拼车出发', lat:30.6630, lng:104.0430, time:'06:30', cost:'拼车¥130-160', desc:'拼车/包车（客栈代订或川西拼车平台），经都江堰-卧龙-巴朗山隧道约4.5-5小时到四姑娘山镇。', tip:'备好晕车药，山路弯多；车上午睡保存体力' },
-      { cat:'food', name:'四姑娘山镇午餐', lat:31.0023, lng:102.8509, time:'11:30', cost:'¥60', desc:'镇上午餐，牦牛汤锅/藏家菜，吃饱再进沟。', tip:'镇上物价略高，可提前备干粮' },
-      { cat:'sight', name:'双桥沟景区', lat:30.9792, lng:102.7696, time:'12:30-17:00', cost:'门票¥80+观光车¥70', desc:'四姑娘山三条沟中最轻松、景观最集中的一条。观光车直达沟底红杉林(3800m)，再逐站下行徒步：红杉林→布达拉峰→四姑娜措→撵鱼坝→隆珠措→人参果坪。', tip:'全程约7km栈道徒步，雪山环绕，摄影天堂' },
-      { cat:'sight', name:'红杉林·冰川景观', lat:31.0960, lng:102.8060, time:'13:00', cost:'含门票', desc:'观光车终点，海拔3800m，近观冰川与雪山，红杉林原始森林。', tip:'高海拔缓行，拍照注意脚下' },
-      { cat:'sight', name:'布达拉峰', lat:31.0600, lng:102.7800, time:'13:50', cost:'含门票', desc:'形似布达拉宫的雪山，草甸+白塔+雪山的经典机位，下午顺光。', tip:'广角低机位拍雪山倒影' },
-      { cat:'sight', name:'四姑娜措', lat:31.0400, lng:102.7800, time:'14:30', cost:'含门票', desc:'双桥沟最美湖泊，雪山倒影如镜，枯木静立水中。', tip:'湖心亭机位，等风停拍镜面' },
-      { cat:'sight', name:'撵鱼坝·人参果坪', lat:30.9900, lng:102.7700, time:'15:30', cost:'含门票', desc:'草甸溪流段，牦牛散养，田园牧歌画面。人参果坪出沟前最后一站。', tip:'16:30前必须出沟，观光车末班' },
-      { cat:'night', name:'返程成都·夜宵', lat:30.6570, lng:104.0810, time:'22:00', cost:'拼车¥130-160', desc:'17:30拼车返程，约22:00-22:30到成都。若体力透支可改宿四姑娘山镇次日早回（会牺牲D5，慎选）。', tip:'回到成都先吃碗冰粉，好好睡一觉' }
+      { cat:'transport', name:'成都 → 峨眉山站（动车）', lat:30.6180, lng:104.0680, time:'07:00', price:'二等座¥65',
+        line:'C字头动车 · 约1小时10分', alt:'成都东/成都南均有班次，12306查询',
+        desc:'乘早班动车，08:20到峨眉山站，打车20分钟到报国寺游客中心。' },
+      { cat:'culture', name:'报国寺·购票上山', lat:29.5680, lng:103.4690, time:'09:00', price:'门票¥160+观光车¥90',
+        desc:'峨眉山门户。购票后乘观光车（报国寺→雷洞坪往返¥90，约2小时盘山公路）。', tip:'行李寄存游客中心或直接带上雷洞坪' },
+      { cat:'sight', name:'雷洞坪（2430m）', lat:29.5250, lng:103.3350, time:'11:30', price:'含观光车',
+        desc:'入住雷洞坪酒店、寄存行李、午餐。午后轻装步行1.5km到接引殿乘索道上金顶。', tip:'雷洞坪温度12-15℃，加外套' },
+      { cat:'food', name:'雷洞坪午餐', lat:29.5240, lng:103.3360, time:'12:00', price:'¥50',
+        desc:'素斋/面条/小吃，吃饱上山。' },
+      { cat:'sight', name:'金顶（3077m）', lat:29.5200, lng:103.3320, time:'13:30-17:30', price:'索道往返¥120',
+        desc:'十方普贤金像+金殿银殿+铜殿。下午光线拍云海层次最佳，远眺贡嘎雪山（天气好时）。17:30前乘索道下山。',
+        tip:'下午云海+侧逆光出片；金顶风大，相机防抖开' },
+      { cat:'sight', name:'金顶云海观景台', lat:29.5220, lng:103.3300, time:'15:00', price:'含门票',
+        desc:'360°环视云海翻涌，峨眉之巅的震撼机位。' },
+      { cat:'transport', name:'金顶 → 雷洞坪', lat:29.5200, lng:103.3320, time:'17:30', price:'索道下行¥55',
+        line:'索道下行 · 约10分钟 + 步行1.5km', alt:'18:30前回酒店',
+        desc:'17:30索道下行到接引殿，步行回雷洞坪酒店。' },
+      { cat:'night', name:'雷洞坪晚餐·早睡', lat:29.5250, lng:103.3350, time:'19:00', price:'¥60',
+        desc:'素斋晚餐，20:00前入睡。明早05:50起床看日出！', tip:'调好闹钟，带头灯/手机照明' }
+    ],
+    tips:[
+      '<b>看日出准备</b>：雷洞坪→金顶索道夏季首班约06:00，05:50起床、06:00到接引殿排队首班，06:15金顶日出（8月下旬约06:15-06:25）',
+      '<b>金顶温度</b>：凌晨8-10℃，薄羽绒+手套必带，日出前是全天最冷时段',
+      '<b>下午机位</b>：13:30-17:30金顶光线侧逆，拍云海层次好；想拍日落云海可待到18:00（索道末班约18:00）',
+      '<b>索道时间</b>：金顶索道运行至18:00左右，17:30前必须排队下山',
+      '<b>雷洞坪住宿</b>：选离接引殿近的酒店，早上少走冤枉路；旺季提前订'
     ]
   },
   {
-    name:'DAY 5 · 峨眉金顶·返程长沙', date:'8/26 周三', center:[29.55,103.38],
+    name:'DAY 5 · 金顶日出·下山返程长沙', date:'8/26 周三', center:[29.52,103.33],
+    hotelStart: { key:'d5_start', name:'雷洞坪酒店（续住D4）', lat:29.5250, lng:103.3350, note:'05:50起床，06:00出发' },
+    hotelEnd:   null,
     pois:[
-      { cat:'sight', name:'成都南/东站出发', lat:30.6180, lng:104.0680, time:'06:30', cost:'动车¥65', desc:'乘最早班动车至峨眉山站（约1h-1h20m），出站打车20分钟到报国寺游客中心。', tip:'行李可寄存游客中心，轻装上山' },
-      { cat:'culture', name:'报国寺·峨眉山博物馆', lat:29.5680, lng:103.4690, time:'08:30', cost:'免费', desc:'峨眉山门户，入山第一寺。快速打卡后购票上山。', tip:'观光车售票处在此，往返雷洞坪¥90' },
-      { cat:'sight', name:'雷洞坪', lat:29.5250, lng:103.3350, time:'10:30', cost:'含观光车', desc:'观光车约2小时盘山到雷洞坪(2430m)，步行1.5km栈道到接引殿乘索道。', tip:'栈道段可远眺雪山，注意保暖' },
-      { cat:'sight', name:'金顶·十方普贤圣像', lat:29.5200, lng:103.3320, time:'11:20-14:30', cost:'索道往返¥120', desc:'金顶海拔3077m，十方普贤金像+金殿银殿+铜殿。晴天云海翻涌，是峨眉之巅。游览约3小时，含金顶绕行与祈福。', tip:'云海概率高；金顶温度12-18℃，薄羽绒' },
-      { cat:'sight', name:'金顶云海观景台', lat:29.5220, lng:103.3300, time:'12:30', cost:'含门票', desc:'观景台360°环视，远眺贡嘎雪山（天气好时）。', tip:'侧逆光拍云海层次最佳' },
-      { cat:'food', name:'雷洞坪简餐', lat:29.5240, lng:103.3360, time:'14:40', cost:'¥40', desc:'下山到雷洞坪午餐（面条/小吃），随后乘观光车下山。', tip:'控制时间，17:00前必须到山脚' },
-      { cat:'sight', name:'峨眉山站→成都', lat:29.6090, lng:103.5090, time:'17:30', cost:'动车¥65', desc:'17:00到报国寺取行李，打车到峨眉山站，乘17:30-18:00动车回成都（约19:00-19:30到）。', tip:'落地成都后直奔双流机场' },
-      { cat:'night', name:'成都双流机场 ✈ 长沙', lat:30.5780, lng:103.9470, time:'21:00后', cost:'机票¥700', desc:'选双流机场21:30后航班（务必避开天府机场！），约23:30-00:30抵达长沙黄花机场。特种兵行程收官。', tip:'提前值机选座；机场吃晚餐' }
+      { cat:'transport', name:'雷洞坪 → 接引殿 → 金顶', lat:29.5250, lng:103.3350, time:'05:50', price:'索道上行¥65',
+        line:'步行1.5km(25min) + 首班索道(约06:00)', alt:'旺季提前到05:40排队',
+        desc:'头灯照明步行至接引殿，乘首班索道上金顶，赶06:15日出。' },
+      { cat:'sight', name:'金顶日出·云海', lat:29.5200, lng:103.3320, time:'06:15-08:30', price:'含门票',
+        desc:'日出+云海+十方普贤金像剪影，峨眉山最震撼瞬间。8月下旬日出约06:15-06:25。拍摄后绕金顶补拍金殿。',
+        tip:'十方普贤东侧机位拍日出；备ND镜拍延时' },
+      { cat:'food', name:'金顶早餐', lat:29.5210, lng:103.3330, time:'08:00', price:'¥30',
+        desc:'金顶小卖部早餐（热豆浆/包子），暖身。' },
+      { cat:'transport', name:'金顶 → 雷洞坪 → 山脚', lat:29.5200, lng:103.3320, time:'08:30', price:'含观光车',
+        line:'索道下行 + 观光车2小时', alt:'09:30乘观光车下山',
+        desc:'08:30索道下山回雷洞坪取行李，09:30乘观光车下山，11:30到报国寺。' },
+      { cat:'food', name:'报国寺午餐（峨眉山脚下）', lat:29.5690, lng:103.4700, time:'12:00', price:'¥50',
+        desc:'峨眉豆腐脑、叶儿粑、乐山钵钵鸡，下山后最解馋。' },
+      { cat:'transport', name:'峨眉山站 → 成都', lat:29.6090, lng:103.5090, time:'13:00', price:'二等座¥65',
+        line:'动车 · 约1小时10分', alt:'14:30前到成都',
+        desc:'12:30打车到峨眉山站，13:00动车回成都。' },
+      { cat:'night', name:'成都自由时间（春熙路/宽窄巷子）', lat:30.6570, lng:104.0810, time:'15:00-19:00', price:'¥80',
+        desc:'若航班在21:00后：逛春熙路IFS熊猫、宽窄巷子，买伴手礼，早晚饭。19:00前往双流机场。',
+        tip:'行李可寄存火车站/商场' },
+      { cat:'transport', name:'成都双流机场 ✈ 长沙黄花', lat:30.5780, lng:103.9470, time:'21:00后', price:'机票¥700',
+        line:'航班约2小时 · 23:00-24:00落地', alt:'务必选双流机场！天府机场离市区1h+',
+        desc:'特种兵5日行程收官。提前网上值机选座。' }
+    ],
+    tips:[
+      '<b>日出时间</b>：8月下旬峨眉山日出约06:15-06:25，金顶索道首班约06:00，05:50起床刚好赶上',
+      '<b>保暖</b>：凌晨金顶8-10℃+大风，薄羽绒/冲锋衣+手套+暖宝宝',
+      '<b>时间红线</b>：08:30必须下山，09:30观光车末班下山，13:00动车回成都，全程卡点别拖延',
+      '<b>返程航班</b>：选双流机场21:30后班次（约¥500-900），提前值机；到长沙约23:30-00:30',
+      '<b>弹性</b>：若金顶大雾无日出，调整为08:00索道下山，行程同样成立'
     ]
   }
 ];
@@ -369,17 +510,13 @@ function makeMarkerSvg(num, color) {
     + '<text x="16" y="21" text-anchor="middle" fill="white" font-size="14" font-weight="bold">' + num + '</text></svg>');
 }
 function catColor(cat) {
-  return { sight:'#6366f1', food:'#f59e0b', culture:'#10b981', shop:'#ec4899', night:'#8b5cf6' }[cat] || '#6366f1';
+  return { sight:'#6366f1', food:'#f59e0b', culture:'#10b981', shop:'#ec4899', night:'#8b5cf6', transport:'#475569', hotel:'#0f766e' }[cat] || '#6366f1';
 }
 
 /* ========== 腾讯地图 ========== */
 function initMap() {
   try {
-    map = new TMap.Map('map-container', {
-      center: new TMap.LatLng(30.65, 104.06),
-      zoom: 6,
-      mapStyleId: "style8"
-    });
+    map = new TMap.Map('map-container', { center: new TMap.LatLng(30.65, 104.06), zoom: 6, mapStyleId: "style8" });
     infoWindow = new TMap.InfoWindow({ map, position: new TMap.LatLng(30.65,104.06), offset: { x: 0, y: -36 } });
     infoWindow.close();
     updateMap(0);
@@ -389,36 +526,25 @@ function initMap() {
 function updateMap(dayIdx) {
   if (!map || typeof TMap === 'undefined') { renderFallbackMap(dayIdx); return; }
   try {
-    const pois = dayData[dayIdx].pois;
+    const d = dayData[dayIdx];
+    const pois = [];
+    if (d.hotelStart) pois.push({ cat:'hotel', name:getHotel(d.hotelStart.key, d.hotelStart.name), lat:d.hotelStart.lat, lng:d.hotelStart.lng, time:'起点', desc:d.hotelStart.note });
+    d.pois.forEach(p => pois.push(p));
+    if (d.hotelEnd) pois.push({ cat:'hotel', name:getHotel(d.hotelEnd.key, d.hotelEnd.name), lat:d.hotelEnd.lat, lng:d.hotelEnd.lng, time:'终点', desc:d.hotelEnd.note });
+
     if (markerLayer) { markerLayer.setMap(null); markerLayer = null; }
     if (pl1) { pl1.setMap(null); pl1 = null; }
     if (pl2) { pl2.setMap(null); pl2 = null; }
 
-    const geometries = pois.map((p, i) => ({
-      id: 'm' + i,
-      styleId: 's' + i,
-      position: new TMap.LatLng(p.lat, p.lng)
-    }));
+    const geometries = pois.map((p, i) => ({ id:'m'+i, styleId:'s'+i, position:new TMap.LatLng(p.lat, p.lng) }));
     const styles = {};
-    pois.forEach((p, i) => { styles['s' + i] = new TMap.MarkerStyle({
-      width: 32, height: 32, anchor: { x: 16, y: 16 },
-      src: makeMarkerSvg(i + 1, catColor(p.cat))
-    }); });
+    pois.forEach((p, i) => { styles['s'+i] = new TMap.MarkerStyle({ width:32, height:32, anchor:{x:16,y:16}, src:makeMarkerSvg(i+1, catColor(p.cat)) }); });
     markerLayer = new TMap.MultiMarker({ map, styles, geometries });
-    markerLayer.on('click', (e) => {
-      const idx = parseInt(e.geometry.id.replace('m',''), 10);
-      showInfoWindow(dayIdx, idx);
-    });
+    markerLayer.on('click', (e) => { showInfoWindow(dayIdx, parseInt(e.geometry.id.replace('m',''),10), pois); });
 
     const paths = pois.map(p => new TMap.LatLng(p.lat, p.lng));
-    pl2 = new TMap.MultiPolyline({
-      map, styles: { 'stroke': new TMap.PolylineStyle({ color: 'rgba(30,58,138,0.65)', width: 8, borderWidth: 0, lineCap: 'round', lineJoin: 'round' }) },
-      geometries: [{ id: 's', styleId: 'stroke', paths }]
-    });
-    pl1 = new TMap.MultiPolyline({
-      map, styles: { 'fill': new TMap.PolylineStyle({ color: 'rgba(59,130,246,0.85)', width: 4, borderWidth: 0, lineCap: 'round', lineJoin: 'round' }) },
-      geometries: [{ id: 'f', styleId: 'fill', paths }]
-    });
+    pl2 = new TMap.MultiPolyline({ map, styles:{ 'stroke': new TMap.PolylineStyle({ color:'rgba(30,58,138,0.65)', width:8, borderWidth:0, lineCap:'round', lineJoin:'round' }) }, geometries:[{ id:'s', styleId:'stroke', paths }] });
+    pl1 = new TMap.MultiPolyline({ map, styles:{ 'fill': new TMap.PolylineStyle({ color:'rgba(59,130,246,0.85)', width:4, borderWidth:0, lineCap:'round', lineJoin:'round' }) }, geometries:[{ id:'f', styleId:'fill', paths }] });
 
     let minLat=90,maxLat=-90,minLng=180,maxLng=-180;
     pois.forEach(p => { minLat=Math.min(minLat,p.lat); maxLat=Math.max(maxLat,p.lat); minLng=Math.min(minLng,p.lng); maxLng=Math.max(maxLng,p.lng); });
@@ -427,16 +553,17 @@ function updateMap(dayIdx) {
   } catch(e) { renderFallbackMap(dayIdx); }
 }
 
-function showInfoWindow(dayIdx, poiIdx) {
+function showInfoWindow(dayIdx, poiIdx, pois) {
   if (!map || typeof TMap === 'undefined') { return; }
   try {
-    const p = dayData[dayIdx].pois[poiIdx];
+    const p = (pois || dayData[dayIdx].pois)[poiIdx];
+    if (!p) return;
     infoWindow.setPosition(new TMap.LatLng(p.lat, p.lng));
-    infoWindow.setContent('<div style="padding:10px 14px;font-family:-apple-system,\'PingFang SC\',sans-serif;max-width:260px">'
-      + '<div style="font-weight:700;font-size:14px;color:#1a1f36">' + (poiIdx+1) + '. ' + p.name + '</div>'
-      + '<div style="font-size:11px;color:#697386;margin:4px 0">⏰ ' + p.time + '</div>'
-      + '<div style="font-size:12px;color:#3d4557;line-height:1.5">' + p.desc + '</div>'
-      + (p.tip ? '<div style="font-size:11px;color:#c2410c;margin-top:6px">📷 ' + p.tip + '</div>' : '')
+    infoWindow.setContent('<div style="padding:10px 14px;max-width:240px;font-family:-apple-system,\'PingFang SC\',sans-serif;word-break:break-all;word-wrap:break-word;white-space:normal">'
+      + '<div style="font-weight:700;font-size:14px;color:#1a1f36;word-break:break-all">' + (poiIdx+1) + '. ' + p.name + '</div>'
+      + '<div style="font-size:11px;color:#697386;margin:4px 0;word-break:break-all">⏰ ' + (p.time||'') + '</div>'
+      + '<div style="font-size:12px;color:#3d4557;line-height:1.5;word-break:break-all;white-space:normal">' + (p.desc||'') + '</div>'
+      + (p.tip ? '<div style="font-size:11px;color:#c2410c;margin-top:6px;word-break:break-all">📷 ' + p.tip + '</div>' : '')
       + '</div>');
     infoWindow.open();
   } catch(e) {}
@@ -446,9 +573,13 @@ function focusPoi(dayIdx, poiIdx) {
   try {
     if (dayIdx !== currentMapDay) switchMapDay(dayIdx, true);
     if (map && typeof TMap !== 'undefined') {
-      const p = dayData[dayIdx].pois[poiIdx];
-      map.easeTo({ center: new TMap.LatLng(p.lat, p.lng), zoom: 13 }, { duration: 800 });
-      showInfoWindow(dayIdx, poiIdx);
+      const d = dayData[dayIdx];
+      const pois = [];
+      if (d.hotelStart) pois.push(d.hotelStart);
+      d.pois.forEach(p => pois.push(p));
+      if (d.hotelEnd) pois.push(d.hotelEnd);
+      const p = pois[poiIdx];
+      if (p) { map.easeTo({ center: new TMap.LatLng(p.lat, p.lng), zoom: 13 }, { duration: 800 }); showInfoWindow(dayIdx, poiIdx, pois); }
     }
   } catch(e) { renderFallbackMap(dayIdx); }
   document.querySelectorAll('.tl-content').forEach(el => el.classList.remove('hl'));
@@ -462,34 +593,79 @@ function switchMapDay(dayIdx, silent) {
   renderItinerary(dayIdx);
   if (!silent) {
     const sec = document.getElementById('itinerary-section');
-    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (sec) sec.scrollIntoView({ behavior:'smooth', block:'start' });
   }
   if (map && typeof TMap !== 'undefined') { updateMap(dayIdx); }
   else { renderFallbackMap(dayIdx); }
 }
 
 /* ========== 行程渲染 ========== */
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
 function renderItinerary(dayIdx) {
   const d = dayData[dayIdx];
   let html = '<div class="day-block">'
     + '<div class="day-head"><span class="day-badge">' + d.name.split('·')[0] + '</span>'
     + '<span class="day-title">' + d.name + '</span><span class="day-sub">' + d.date + '</span></div>';
+
+  let seq = 1;
+  if (d.hotelStart) {
+    html += hotelHtml(d.hotelStart, '起点', seq++);
+  }
   d.pois.forEach((p, i) => {
-    html += '<div class="tl-item">'
-      + '<div class="tl-dot"></div>'
-      + '<div class="tl-time">' + p.time.split('-')[0] + '</div>'
-      + '<div class="tl-content" onclick="focusPoi(' + dayIdx + ',' + i + ')">'
-      + '<div class="tl-place"><span class="tl-seq seq-' + p.cat + '">' + (i+1) + '</span>' + p.name + '</div>'
-      + '<div class="tl-desc">' + p.desc + '</div>'
-      + '<div class="tl-tags">'
-      + '<span class="tag tag-' + p.cat + '">' + CAT_CN[p.cat] + '</span>'
-      + (p.tip ? '<span class="tag tag-tip">📷 ' + p.tip + '</span>' : '')
-      + (p.cost ? '<span class="tag tag-cost">💰 ' + p.cost + '</span>' : '')
-      + '</div></div></div>';
+    html += poiHtml(p, dayIdx, i, seq++);
   });
-  if (d.alert) html += '<div class="day-alert">' + d.alert + '</div>';
+  if (d.hotelEnd) {
+    html += hotelHtml(d.hotelEnd, '终点', seq++);
+  }
+
+  if (d.tips && d.tips.length) {
+    html += '<div class="day-tips"><div class="dt-title">🎯 当日专属贴士（' + d.date + '）</div><ul>';
+    d.tips.forEach(t => { html += '<li>' + t + '</li>'; });
+    html += '</ul></div>';
+  }
   html += '</div>';
   document.getElementById('itinerary-content').innerHTML = html;
+}
+
+function poiHtml(p, dayIdx, poiIdx, seq) {
+  let tags = '<span class="tag tag-' + p.cat + '">' + CAT_CN[p.cat] + '</span>';
+  if (p.tip) tags += '<span class="tag tag-tip">📷 ' + p.tip + '</span>';
+  if (p.price) tags += '<span class="tag tag-cost">💰 ' + p.price + '</span>';
+  let extra = '';
+  if (p.cat === 'transport' && p.line) {
+    extra = '<div class="transport-line">'
+      + (p.line ? '<span class="tno">' + esc(p.line) + '</span>' : '')
+      + '</div>'
+      + (p.alt ? '<div class="transport-line" style="color:#b45309;font-weight:500"><span style="font-size:11px">备选</span> ' + esc(p.alt) + '</div>' : '');
+  }
+  return '<div class="tl-item">'
+    + '<div class="tl-dot"></div>'
+    + '<div class="tl-time">' + esc(p.time ? p.time.split('-')[0] : '') + '</div>'
+    + '<div class="tl-content ' + (p.cat==='transport' ? 'transport-card' : '') + '" onclick="focusPoi(' + dayIdx + ',' + poiIdx + ')">'
+    + '<div class="tl-place"><span class="tl-seq seq-' + p.cat + '">' + (p.cat==='transport' ? '🚄' : p.cat==='food' ? '食' : p.cat==='culture' ? '文' : p.cat==='night' ? '夜' : seq) + '</span>' + esc(p.name) + '</div>'
+    + extra
+    + '<div class="tl-desc">' + p.desc + '</div>'
+    + '<div class="tl-tags">' + tags + '</div>'
+    + '</div></div>';
+}
+
+function hotelHtml(h, posLabel, seq) {
+  const val = getHotel(h.key, h.name);
+  return '<div class="tl-item">'
+    + '<div class="tl-dot" style="background:#0f766e;box-shadow:0 0 0 4px rgba(15,118,110,.15)"></div>'
+    + '<div class="tl-time" style="color:#0f766e">' + posLabel + '</div>'
+    + '<div class="tl-content hotel-card" onclick="event.stopPropagation();">'
+    + '<div class="tl-place"><span class="tl-seq seq-hotel">🏨</span>'
+    + '<input class="hotel-input" value="' + esc(val) + '" placeholder="点击填写酒店名" onchange="saveHotel(\'' + h.key + '\', this.value)" onblur="saveHotel(\'' + h.key + '\', this.value)">'
+    + '</div>'
+    + '<div class="hotel-meta">📍 ' + esc(h.note) + '</div>'
+    + '<div class="tl-tags"><span class="tag tag-hotel">酒店</span><span class="tag tag-cost">宿 ' + posLabel + '</span></div>'
+    + '</div></div>';
+}
+function saveHotel(key, val) {
+  setHotel(key, val.trim());
+  if (map && typeof TMap !== 'undefined') { updateMap(currentMapDay); }
 }
 
 /* ========== 降级：Leaflet ========== */
@@ -501,62 +677,62 @@ function renderFallbackMap(dayIdx) {
 }
 function loadLeafletAssets(onReady, onError) {
   if (window.L && document.getElementById('leaflet-css')) { onReady(); return; }
-  const css = document.createElement('link');
-  css.id = 'leaflet-css'; css.rel = 'stylesheet';
-  css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-  document.head.appendChild(css);
+  const css = document.createElement('link'); css.id='leaflet-css'; css.rel='stylesheet';
+  css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(css);
   const s = document.createElement('script');
   s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-  s.onload = onReady; s.onerror = onError;
-  document.head.appendChild(s);
+  s.onload = onReady; s.onerror = onError; document.head.appendChild(s);
 }
 function renderLeafletMap(dayIdx) {
   try {
     if (!window.L) { renderStaticFallbackMap(dayIdx); return; }
-    const el = document.getElementById('map-container');
-    el.innerHTML = '';
+    const el = document.getElementById('map-container'); el.innerHTML = '';
     const d = dayData[dayIdx];
+    const pois = [];
+    if (d.hotelStart) pois.push(d.hotelStart);
+    d.pois.forEach(p => pois.push(p));
+    if (d.hotelEnd) pois.push(d.hotelEnd);
     const lmap = L.map('map-container');
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OSM' }).addTo(lmap);
-    const latlngs = d.pois.map(p => [p.lat, p.lng]);
-    d.pois.forEach((p, i) => {
-      L.marker([p.lat, p.lng]).addTo(lmap)
-        .bindPopup('<b>' + (i+1) + '. ' + p.name + '</b><br>⏰ ' + p.time + '<br>' + p.desc);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:18, attribution:'© OSM' }).addTo(lmap);
+    const latlngs = pois.map(p => [p.lat, p.lng]);
+    pois.forEach((p, i) => {
+      L.marker([p.lat, p.lng]).addTo(lmap).bindPopup('<b>' + (i+1) + '. ' + p.name + '</b><br>⏰ ' + (p.time||'') + '<br>' + (p.desc||''));
     });
-    L.polyline(latlngs, { color: '#3b82f6', weight: 4 }).addTo(lmap);
-    lmap.fitBounds(latlngs, { padding: [30, 30] });
+    L.polyline(latlngs, { color:'#3b82f6', weight:4 }).addTo(lmap);
+    lmap.fitBounds(latlngs, { padding:[30,30] });
   } catch(e) { renderStaticFallbackMap(dayIdx); }
 }
 function renderStaticFallbackMap(dayIdx) {
   try {
     const d = dayData[dayIdx];
     const el = document.getElementById('map-container');
+    const pois = [];
+    if (d.hotelStart) pois.push(d.hotelStart);
+    d.pois.forEach(p => pois.push(p));
+    if (d.hotelEnd) pois.push(d.hotelEnd);
     let minLat=90,maxLat=-90,minLng=180,maxLng=-180;
-    d.pois.forEach(p => { minLat=Math.min(minLat,p.lat); maxLat=Math.max(maxLat,p.lat); minLng=Math.min(minLng,p.lng); maxLng=Math.max(maxLng,p.lng); });
-    const W = 640, H = 380, pad = 30;
-    const xf = x => pad + (x - minLng) / (maxLng - minLng || 1) * (W - 2*pad);
-    const yf = y => H - pad - (y - minLat) / (maxLat - minLat || 1) * (H - 2*pad);
-    let pts = d.pois.map(p => xf(p.lng).toFixed(1) + ',' + yf(p.lat).toFixed(1));
-    let html = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:100%;background:#eef2f7">'
-      + '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round"/>';
-    d.pois.forEach((p, i) => {
-      const cx = xf(p.lng), cy = yf(p.lat);
-      html += '<circle cx="' + cx + '" cy="' + cy + '" r="13" fill="' + catColor(p.cat) + '" stroke="#fff" stroke-width="2"/>'
-        + '<text x="' + cx + '" y="' + (cy+4) + '" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">' + (i+1) + '</text>'
-        + '<text x="' + cx + '" y="' + (cy+28) + '" text-anchor="middle" font-size="10" fill="#1a1f36">' + p.name + '</text>';
+    pois.forEach(p => { minLat=Math.min(minLat,p.lat); maxLat=Math.max(maxLat,p.lat); minLng=Math.min(minLng,p.lng); maxLng=Math.max(maxLng,p.lng); });
+    const W=640, H=380, pad=30;
+    const xf = x => pad + (x-minLng)/(maxLng-minLng||1)*(W-2*pad);
+    const yf = y => H-pad - (y-minLat)/(maxLat-minLat||1)*(H-2*pad);
+    let pts = pois.map(p => xf(p.lng).toFixed(1)+','+yf(p.lat).toFixed(1));
+    let html = '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:100%;background:#eef2f7">'
+      + '<polyline points="'+pts.join(' ')+'" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round"/>';
+    pois.forEach((p,i)=>{
+      const cx=xf(p.lng), cy=yf(p.lat);
+      html += '<circle cx="'+cx+'" cy="'+cy+'" r="13" fill="'+catColor(p.cat)+'" stroke="#fff" stroke-width="2"/>'
+        + '<text x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">'+(i+1)+'</text>'
+        + '<text x="'+cx+'" y="'+(cy+28)+'" text-anchor="middle" font-size="10" fill="#1a1f36">'+p.name+'</text>';
     });
     html += '</svg>';
     el.innerHTML = html;
   } catch(e) { document.getElementById('map-container').innerHTML = '<div style="padding:40px;text-align:center;color:#697386">地图加载失败，请联网后刷新</div>'; }
 }
 
-/* ========== 初始化（黄金方案） ========== */
+/* ========== 初始化 ========== */
 document.addEventListener('DOMContentLoaded', function() {
   renderItinerary(0);
-  if (location.protocol === 'file:') {
-    renderFallbackMap(0);
-    return;
-  }
+  if (location.protocol === 'file:') { renderFallbackMap(0); return; }
   const script = document.createElement('script');
   script.src = 'https://map.qq.com/api/gljs?v=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&callback=initMap';
   script.onerror = function() { renderFallbackMap(currentMapDay); };
