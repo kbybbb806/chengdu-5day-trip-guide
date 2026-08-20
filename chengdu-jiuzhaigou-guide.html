@@ -541,6 +541,7 @@ function getHotelForCard(h) {
 /* ========== 地图全局 ========== */
 let map = null, markerLayer = null, pl1 = null, pl2 = null, infoWindow = null;
 let currentMapDay = 0;
+let _curHotelDay = 0;
 let _searchTimer = null;
 
 function makeMarkerSvg(num, color) {
@@ -717,6 +718,7 @@ function hotelHtml(p, dayIdx, idx) {
 
 /* ========== 酒店搜索 ========== */
 function openHotelDropdown(key, currentAddr, currentNote, dayIdx, idx) {
+  _curHotelDay = dayIdx;
   // 关闭其他
   document.querySelectorAll('.hotel-dropdown').forEach(d => { if (d.id !== 'hd-'+key) d.style.display='none'; });
   const drop = document.getElementById('hd-' + key);
@@ -765,7 +767,7 @@ function findHotelDef(key) {
 }
 
 function renderOpt(key, c, i, kind) {
-  return '<div class="hd-opt" onclick="selectHotel(\'' + key + '\',' + kind + ',' + i + ')">'
+  return '<div class="hd-opt" onclick="selectHotel(\'' + key + '\',\'' + kind + '\',' + i + ')">'
     + '<div class="opt-name">🏨 ' + esc(c.name) + '</div>'
     + '<div class="opt-addr">📍 ' + esc(c.address || '') + '</div>'
     + '<div class="opt-coord">' + c.lat.toFixed(4) + ', ' + c.lng.toFixed(4) + '</div>'
@@ -827,11 +829,11 @@ function selectHotel(key, kind, idx) {
   setHotel(key, { name: c.name, lat: c.lat, lng: c.lng, address: c.address || '' });
   // 关闭下拉
   document.getElementById('hd-' + key).style.display = 'none';
-  // 重渲染当前day的酒店卡
-  renderItinerary(currentMapDay);
+  // 重渲染用户正在浏览的day（用 _curHotelDay 而非 currentMapDay）
+  renderItinerary(_curHotelDay);
   // 更新地图
-  if (map && typeof TMap !== 'undefined') updateMap(currentMapDay);
-  else renderFallbackMap(currentMapDay);
+  if (map && typeof TMap !== 'undefined') updateMap(_curHotelDay);
+  else renderFallbackMap(_curHotelDay);
 }
 
 /* ========== 预置推荐酒店（按key） ========== */
